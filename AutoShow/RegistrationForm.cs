@@ -32,11 +32,40 @@ namespace AutoShow
 
         private void CheckInButton_Click(object sender, EventArgs e)
         {
-            bool filled = this.Controls.OfType<TextBox>().Any(textBox => textBox.TextLength == 0);
-            if (filled)
+            #region InputValidation
+            if (FirstNameTextBox.Text.Length > 20 || LastNameTextBox.Text.Length > 20 ||
+                PasswordTextBox.Text.Length > 20 || SecondPasswordTextBox.Text.Length > 20)
             {
-                MessageBox.Show("Дыбил");
+                MessageBox.Show("Данные в полях не должны содержать больше 20 символов");
+                return;
             }
+            if (PasswordTextBox.Text.Length < 8 || SecondPasswordTextBox.Text.Length < 8)
+            {
+                MessageBox.Show("Пароль должен состоять минимум из 8 символов");
+                return;
+            }
+            if (!InputValidator.IsValidName(FirstNameTextBox.Text, out string nameError))
+            {
+                MessageBox.Show(nameError);
+                return;
+            }
+            else if (!InputValidator.IsValidName(LastNameTextBox.Text, out string lastNameError))
+            {
+                MessageBox.Show(nameError);
+                return;
+            }
+            else if (!InputValidator.IsValidPassword(PasswordTextBox.Text, out string passwordError))
+            {
+                MessageBox.Show(passwordError);
+                return;
+            }
+            if (PasswordTextBox.Text != SecondPasswordTextBox.Text)
+            {
+                MessageBox.Show("Введенные пароли не совпадают");
+                return;
+            }
+            #endregion
+            
         }
     }
 }
