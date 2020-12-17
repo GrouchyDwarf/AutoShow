@@ -109,6 +109,45 @@ namespace AutoShow
                 return;
             }
             #endregion
+            string firstName = FirstNameTextBox.Text;
+            string lastName = LastNameTextBox.Text;
+            string password = PasswordTextBox.Text;
+            string address = AddressTextBox.Text;
+            string phone = PhoneTextBox.Text;
+            string email = EmailTextBox.Text;
+
+            var clients = _context.Clients.ToList();
+            foreach (Client client in clients)
+            {
+                if (client.FirstName == firstName && client.LastName == lastName)
+                {
+                    MessageBox.Show("Клиент с таким именем и фамилией уже существует");
+                    return;
+                } 
+                else if (client.PassportId == int.Parse(passportNumber))
+                {
+                    MessageBox.Show("Клиент с таким паспортом уже существует");
+                    return;
+                }
+            }
+            var newClient = new Client
+            {
+                ClientId = _context.Clients.Count() + 1,
+                FirstName = firstName,
+                LastName = lastName,
+                Password = password,
+                Address = address,
+                PassportId = int.Parse(passportNumber),
+                PassportSeries = int.Parse(passportSeries),
+                Phone = phone,
+                Email = email
+            };
+            _context.Clients.Add(newClient);
+            _context.SaveChanges();
+            MessageBox.Show("Регистрация прошла успешно");
+            var loginForm = new LoginForm(_startForm, _context);
+            loginForm.Show();
+            this.Close();
         }
     }
 }
