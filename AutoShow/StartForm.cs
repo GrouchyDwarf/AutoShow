@@ -81,7 +81,7 @@ namespace AutoShow
         private void LoginButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var loginForm = new LoginForm(this, _context);
+            var loginForm = new LoginForm(this, _context, _role);
             loginForm.Show();
         }
 

@@ -99,6 +99,7 @@
             this.LoginButton.TabIndex = 9;
             this.LoginButton.Text = "Войти";
             this.LoginButton.UseVisualStyleBackColor = false;
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // PasswordLabel
             // 

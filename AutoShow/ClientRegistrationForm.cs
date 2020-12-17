@@ -109,6 +109,7 @@ namespace AutoShow
                 return;
             }
             #endregion
+            #region GetRegistrationInfo
             string firstName = FirstNameTextBox.Text;
             string lastName = LastNameTextBox.Text;
             string password = PasswordTextBox.Text;
@@ -145,9 +146,10 @@ namespace AutoShow
             _context.Clients.Add(newClient);
             _context.SaveChanges();
             MessageBox.Show("Регистрация прошла успешно");
-            var loginForm = new LoginForm(_startForm, _context);
+            var loginForm = new LoginForm(_startForm, _context, Role.Client);
             loginForm.Show();
             this.Close();
+            #endregion
         }
     }
 }
