@@ -8,16 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AutoShow;
+using AutoShow.Data;
 
 namespace AutoShow
 {
     public partial class LoginForm : Form
     {
-        StartForm _startForm;
-        public LoginForm(StartForm startForm)
+        private readonly StartForm _startForm;
+        private readonly AutoShowContext _context;
+        public LoginForm(in StartForm startForm, in AutoShowContext context)
         {
             InitializeComponent();
             _startForm = startForm;
+            _context = context;
         }
 
         private void CloseLabel_Click(object sender, EventArgs e)

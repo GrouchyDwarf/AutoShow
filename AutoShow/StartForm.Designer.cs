@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
-            this.UserLabel = new System.Windows.Forms.Label();
+            this.ClientLabel = new System.Windows.Forms.Label();
             this.DeliveryManLabel = new System.Windows.Forms.Label();
             this.AdminLabel = new System.Windows.Forms.Label();
             this.ManagerLabel = new System.Windows.Forms.Label();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.ManagerPictureBox = new System.Windows.Forms.PictureBox();
             this.AdminPictureBox = new System.Windows.Forms.PictureBox();
-            this.UserPictureBox = new System.Windows.Forms.PictureBox();
+            this.ClientPictureBox = new System.Windows.Forms.PictureBox();
             this.DeliveryManPictureBox = new System.Windows.Forms.PictureBox();
             this.LoginButton = new System.Windows.Forms.Button();
             this.CheckInButton = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             this.BodyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ManagerPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeliveryManPictureBox)).BeginInit();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
@@ -54,14 +54,14 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
-            this.BodyPanel.Controls.Add(this.UserLabel);
+            this.BodyPanel.Controls.Add(this.ClientLabel);
             this.BodyPanel.Controls.Add(this.DeliveryManLabel);
             this.BodyPanel.Controls.Add(this.AdminLabel);
             this.BodyPanel.Controls.Add(this.ManagerLabel);
             this.BodyPanel.Controls.Add(this.StatusLabel);
             this.BodyPanel.Controls.Add(this.ManagerPictureBox);
             this.BodyPanel.Controls.Add(this.AdminPictureBox);
-            this.BodyPanel.Controls.Add(this.UserPictureBox);
+            this.BodyPanel.Controls.Add(this.ClientPictureBox);
             this.BodyPanel.Controls.Add(this.DeliveryManPictureBox);
             this.BodyPanel.Controls.Add(this.LoginButton);
             this.BodyPanel.Controls.Add(this.CheckInButton);
@@ -72,18 +72,18 @@
             this.BodyPanel.Size = new System.Drawing.Size(501, 503);
             this.BodyPanel.TabIndex = 1;
             // 
-            // UserLabel
+            // ClientLabel
             // 
-            this.UserLabel.AutoSize = true;
-            this.UserLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UserLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UserLabel.ForeColor = System.Drawing.Color.White;
-            this.UserLabel.Location = new System.Drawing.Point(378, 366);
-            this.UserLabel.Name = "UserLabel";
-            this.UserLabel.Size = new System.Drawing.Size(79, 23);
-            this.UserLabel.TabIndex = 21;
-            this.UserLabel.Text = "Клиент";
-            this.UserLabel.Click += new System.EventHandler(this.UserLabel_Click);
+            this.ClientLabel.AutoSize = true;
+            this.ClientLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClientLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClientLabel.ForeColor = System.Drawing.Color.White;
+            this.ClientLabel.Location = new System.Drawing.Point(378, 366);
+            this.ClientLabel.Name = "ClientLabel";
+            this.ClientLabel.Size = new System.Drawing.Size(79, 23);
+            this.ClientLabel.TabIndex = 21;
+            this.ClientLabel.Text = "Клиент";
+            this.ClientLabel.Click += new System.EventHandler(this.ClientLabel_Click);
             // 
             // DeliveryManLabel
             // 
@@ -157,16 +157,16 @@
             this.AdminPictureBox.TabIndex = 15;
             this.AdminPictureBox.TabStop = false;
             // 
-            // UserPictureBox
+            // ClientPictureBox
             // 
-            this.UserPictureBox.Image = global::AutoShow.Properties.Resources.User;
-            this.UserPictureBox.InitialImage = global::AutoShow.Properties.Resources.User;
-            this.UserPictureBox.Location = new System.Drawing.Point(369, 251);
-            this.UserPictureBox.Name = "UserPictureBox";
-            this.UserPictureBox.Size = new System.Drawing.Size(100, 100);
-            this.UserPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.UserPictureBox.TabIndex = 14;
-            this.UserPictureBox.TabStop = false;
+            this.ClientPictureBox.Image = global::AutoShow.Properties.Resources.User;
+            this.ClientPictureBox.InitialImage = global::AutoShow.Properties.Resources.User;
+            this.ClientPictureBox.Location = new System.Drawing.Point(369, 251);
+            this.ClientPictureBox.Name = "ClientPictureBox";
+            this.ClientPictureBox.Size = new System.Drawing.Size(100, 100);
+            this.ClientPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ClientPictureBox.TabIndex = 14;
+            this.ClientPictureBox.TabStop = false;
             // 
             // DeliveryManPictureBox
             // 
@@ -264,7 +264,7 @@
             this.BodyPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ManagerPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdminPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ClientPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeliveryManPictureBox)).EndInit();
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
@@ -281,13 +281,13 @@
         private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.Button CheckInButton;
         private System.Windows.Forms.PictureBox DeliveryManPictureBox;
-        private System.Windows.Forms.PictureBox UserPictureBox;
+        private System.Windows.Forms.PictureBox ClientPictureBox;
         private System.Windows.Forms.PictureBox AdminPictureBox;
         private System.Windows.Forms.PictureBox ManagerPictureBox;
         private System.Windows.Forms.Label AdminLabel;
         private System.Windows.Forms.Label ManagerLabel;
         private System.Windows.Forms.Label StatusLabel;
-        private System.Windows.Forms.Label UserLabel;
+        private System.Windows.Forms.Label ClientLabel;
         private System.Windows.Forms.Label DeliveryManLabel;
     }
 }

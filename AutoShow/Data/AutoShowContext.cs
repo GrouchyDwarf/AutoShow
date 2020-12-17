@@ -13,24 +13,24 @@ namespace AutoShow.Data
         {
         }
 
-        public virtual DbSet<Admin> Admin { get; set; }
-        public virtual DbSet<BodyType> BodyType { get; set; }
-        public virtual DbSet<CarBrand> CarBrand { get; set; }
-        public virtual DbSet<CarModel> CarModel { get; set; }
-        public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<Colour> Colour { get; set; }
-        public virtual DbSet<Country> Country { get; set; }
-        public virtual DbSet<EngineLocation> EngineLocation { get; set; }
-        public virtual DbSet<EngineType> EngineType { get; set; }
-        public virtual DbSet<Manager> Manager { get; set; }
-        public virtual DbSet<PaintedModel> PaintedModel { get; set; }
-        public virtual DbSet<PaymentType> PaymentType { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Provider> Provider { get; set; }
-        public virtual DbSet<Purchase> Purchase { get; set; }
-        public virtual DbSet<Supply> Supply { get; set; }
-        public virtual DbSet<TechnicalInformation> TechnicalInformation { get; set; }
-        public virtual DbSet<Warehouse> Warehouse { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<BodyType> BodyTypes { get; set; }
+        public virtual DbSet<CarBrand> CarBrands { get; set; }
+        public virtual DbSet<CarModel> CarModels { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Colour> Colours { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<EngineLocation> EngineLocations { get; set; }
+        public virtual DbSet<EngineType> EngineTypes { get; set; }
+        public virtual DbSet<Manager> Managers { get; set; }
+        public virtual DbSet<PaintedModel> PaintedModels { get; set; }
+        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Provider> Providers { get; set; }
+        public virtual DbSet<Purchase> Purchases { get; set; }
+        public virtual DbSet<Supply> Supplies { get; set; }
+        public virtual DbSet<TechnicalInformation> TechnicalInformations { get; set; }
+        public virtual DbSet<Warehouse> Warehouses { get; set; }//The quantity of products is stored here
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
