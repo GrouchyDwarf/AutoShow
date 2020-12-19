@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.EngineTypeLabel = new System.Windows.Forms.Label();
+            this.EngineLocationLabel = new System.Windows.Forms.Label();
             this.CarModelLabel = new System.Windows.Forms.Label();
             this.CarBrandLabel = new System.Windows.Forms.Label();
             this.BodyTypeLabel = new System.Windows.Forms.Label();
@@ -45,6 +47,8 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
+            this.BodyPanel.Controls.Add(this.EngineTypeLabel);
+            this.BodyPanel.Controls.Add(this.EngineLocationLabel);
             this.BodyPanel.Controls.Add(this.CarModelLabel);
             this.BodyPanel.Controls.Add(this.CarBrandLabel);
             this.BodyPanel.Controls.Add(this.BodyTypeLabel);
@@ -58,13 +62,37 @@
             this.BodyPanel.Size = new System.Drawing.Size(501, 503);
             this.BodyPanel.TabIndex = 2;
             // 
+            // EngineTypeLabel
+            // 
+            this.EngineTypeLabel.AutoSize = true;
+            this.EngineTypeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EngineTypeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EngineTypeLabel.ForeColor = System.Drawing.Color.White;
+            this.EngineTypeLabel.Location = new System.Drawing.Point(338, 160);
+            this.EngineTypeLabel.Name = "EngineTypeLabel";
+            this.EngineTypeLabel.Size = new System.Drawing.Size(160, 23);
+            this.EngineTypeLabel.TabIndex = 22;
+            this.EngineTypeLabel.Text = "Типы двигателя";
+            // 
+            // EngineLocationLabel
+            // 
+            this.EngineLocationLabel.AutoSize = true;
+            this.EngineLocationLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EngineLocationLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EngineLocationLabel.ForeColor = System.Drawing.Color.White;
+            this.EngineLocationLabel.Location = new System.Drawing.Point(163, 160);
+            this.EngineLocationLabel.Name = "EngineLocationLabel";
+            this.EngineLocationLabel.Size = new System.Drawing.Size(158, 23);
+            this.EngineLocationLabel.TabIndex = 21;
+            this.EngineLocationLabel.Text = "Располож. Двиг.";
+            // 
             // CarModelLabel
             // 
             this.CarModelLabel.AutoSize = true;
             this.CarModelLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CarModelLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CarModelLabel.ForeColor = System.Drawing.Color.White;
-            this.CarModelLabel.Location = new System.Drawing.Point(378, 160);
+            this.CarModelLabel.Location = new System.Drawing.Point(190, 224);
             this.CarModelLabel.Name = "CarModelLabel";
             this.CarModelLabel.Size = new System.Drawing.Size(80, 23);
             this.CarModelLabel.TabIndex = 20;
@@ -77,7 +105,7 @@
             this.CarBrandLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CarBrandLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CarBrandLabel.ForeColor = System.Drawing.Color.White;
-            this.CarBrandLabel.Location = new System.Drawing.Point(221, 160);
+            this.CarBrandLabel.Location = new System.Drawing.Point(54, 224);
             this.CarBrandLabel.Name = "CarBrandLabel";
             this.CarBrandLabel.Size = new System.Drawing.Size(72, 23);
             this.CarBrandLabel.TabIndex = 19;
@@ -90,7 +118,7 @@
             this.BodyTypeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BodyTypeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BodyTypeLabel.ForeColor = System.Drawing.Color.White;
-            this.BodyTypeLabel.Location = new System.Drawing.Point(27, 160);
+            this.BodyTypeLabel.Location = new System.Drawing.Point(12, 160);
             this.BodyTypeLabel.Name = "BodyTypeLabel";
             this.BodyTypeLabel.Size = new System.Drawing.Size(129, 23);
             this.BodyTypeLabel.TabIndex = 18;
@@ -208,5 +236,7 @@
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Label CloseLabel;
         private System.Windows.Forms.Label AdminInfoLabel;
+        private System.Windows.Forms.Label EngineTypeLabel;
+        private System.Windows.Forms.Label EngineLocationLabel;
     }
 }

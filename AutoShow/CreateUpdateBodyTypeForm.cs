@@ -52,6 +52,11 @@ namespace AutoShow
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
+            if(_bodyType != null)
+            {
+                MessageBox.Show("Вы перепутали обновление и создание");
+                return;
+            }
             string bodyTypeName = BodyTypeTextBox.Text;
             var bodyTypes = _context.BodyTypes.ToList();
             foreach (BodyType bodyType in bodyTypes)
@@ -71,10 +76,14 @@ namespace AutoShow
             {
                 MessageBox.Show("Данные успешно добавлены");
             }
-
         }
         private void UpdateButton_Click(object sender, EventArgs e)
         {
+            if (_bodyType == null)
+            {
+                MessageBox.Show("Вы перепутали обновление и создание");
+                return;
+            }
             var bodyType = _context.BodyTypes.Where(b => b.BodyTypeName == _bodyType.BodyTypeName).FirstOrDefault();
             bodyType.BodyTypeName = BodyTypeTextBox.Text;
             if (_context.SaveChanges() > 0)

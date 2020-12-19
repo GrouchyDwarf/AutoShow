@@ -1,6 +1,6 @@
 ﻿namespace AutoShow
 {
-    partial class BodyTypeForm
+    partial class EngineLocationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -55,7 +55,7 @@
             this.BodyPanel.Location = new System.Drawing.Point(0, 0);
             this.BodyPanel.Name = "BodyPanel";
             this.BodyPanel.Size = new System.Drawing.Size(501, 503);
-            this.BodyPanel.TabIndex = 3;
+            this.BodyPanel.TabIndex = 4;
             // 
             // UpdateButton
             // 
@@ -72,7 +72,6 @@
             this.UpdateButton.TabIndex = 16;
             this.UpdateButton.Text = "Обновить";
             this.UpdateButton.UseVisualStyleBackColor = false;
-            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // AddButton
             // 
@@ -89,7 +88,6 @@
             this.AddButton.TabIndex = 15;
             this.AddButton.Text = "Создать";
             this.AddButton.UseVisualStyleBackColor = false;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // DeleteButton
             // 
@@ -106,7 +104,6 @@
             this.DeleteButton.TabIndex = 14;
             this.DeleteButton.Text = "Удалить";
             this.DeleteButton.UseVisualStyleBackColor = false;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // bodyTypeDataGridView
             // 
@@ -136,7 +133,6 @@
             this.BackButton.TabIndex = 11;
             this.BackButton.Text = "Назад";
             this.BackButton.UseVisualStyleBackColor = false;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // HeaderPanel
             // 
@@ -161,7 +157,6 @@
             this.CloseLabel.Size = new System.Drawing.Size(27, 25);
             this.CloseLabel.TabIndex = 1;
             this.CloseLabel.Text = "X";
-            this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
             // 
             // BodyTypeLabel
             // 
@@ -174,16 +169,16 @@
             this.BodyTypeLabel.TabIndex = 17;
             this.BodyTypeLabel.Text = "Типы кузова";
             // 
-            // BodyTypeForm
+            // EngineLocationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 503);
             this.Controls.Add(this.BodyPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BodyTypeForm";
+            this.Name = "EngineLocationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BodyTypeForm";
+            this.Text = "EngineLocationForm";
             this.BodyPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bodyTypeDataGridView)).EndInit();
             this.HeaderPanel.ResumeLayout(false);
@@ -195,13 +190,13 @@
         #endregion
 
         private System.Windows.Forms.Panel BodyPanel;
-        private System.Windows.Forms.Label BodyTypeLabel;
+        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.DataGridView bodyTypeDataGridView;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Label CloseLabel;
-        private System.Windows.Forms.DataGridView bodyTypeDataGridView;
-        private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.Label BodyTypeLabel;
     }
 }

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.BodyTypeTextBox = new System.Windows.Forms.TextBox();
+            this.CreateButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.CloseLabel = new System.Windows.Forms.Label();
             this.BodyTypeLabel = new System.Windows.Forms.Label();
-            this.CreateButton = new System.Windows.Forms.Button();
-            this.BodyTypeTextBox = new System.Windows.Forms.TextBox();
             this.BodyPanel.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +53,32 @@
             this.BodyPanel.Name = "BodyPanel";
             this.BodyPanel.Size = new System.Drawing.Size(501, 503);
             this.BodyPanel.TabIndex = 4;
+            // 
+            // BodyTypeTextBox
+            // 
+            this.BodyTypeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BodyTypeTextBox.Location = new System.Drawing.Point(151, 209);
+            this.BodyTypeTextBox.Multiline = true;
+            this.BodyTypeTextBox.Name = "BodyTypeTextBox";
+            this.BodyTypeTextBox.Size = new System.Drawing.Size(214, 35);
+            this.BodyTypeTextBox.TabIndex = 16;
+            // 
+            // CreateButton
+            // 
+            this.CreateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
+            this.CreateButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CreateButton.FlatAppearance.BorderSize = 0;
+            this.CreateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
+            this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateButton.ForeColor = System.Drawing.Color.White;
+            this.CreateButton.Location = new System.Drawing.Point(312, 357);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(151, 41);
+            this.CreateButton.TabIndex = 15;
+            this.CreateButton.Text = "Создать";
+            this.CreateButton.UseVisualStyleBackColor = false;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // UpdateButton
             // 
@@ -123,32 +149,6 @@
             this.BodyTypeLabel.Size = new System.Drawing.Size(176, 32);
             this.BodyTypeLabel.TabIndex = 17;
             this.BodyTypeLabel.Text = "Типы кузова";
-            // 
-            // CreateButton
-            // 
-            this.CreateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
-            this.CreateButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CreateButton.FlatAppearance.BorderSize = 0;
-            this.CreateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
-            this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreateButton.ForeColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(312, 357);
-            this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(151, 41);
-            this.CreateButton.TabIndex = 15;
-            this.CreateButton.Text = "Создать";
-            this.CreateButton.UseVisualStyleBackColor = false;
-            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
-            // 
-            // BodyTypeTextBox
-            // 
-            this.BodyTypeTextBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BodyTypeTextBox.Location = new System.Drawing.Point(151, 209);
-            this.BodyTypeTextBox.Multiline = true;
-            this.BodyTypeTextBox.Name = "BodyTypeTextBox";
-            this.BodyTypeTextBox.Size = new System.Drawing.Size(214, 35);
-            this.BodyTypeTextBox.TabIndex = 16;
             // 
             // CreateUpdateBodyTypeForm
             // 

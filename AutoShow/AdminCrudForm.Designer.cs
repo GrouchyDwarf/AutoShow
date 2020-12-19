@@ -1,6 +1,6 @@
 ﻿namespace AutoShow
 {
-    partial class BodyTypeForm
+    partial class AdminCrudForm
     {
         /// <summary>
         /// Required designer variable.
@@ -32,13 +32,13 @@
             this.UpdateButton = new System.Windows.Forms.Button();
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.bodyTypeDataGridView = new System.Windows.Forms.DataGridView();
+            this.DataGridView = new System.Windows.Forms.DataGridView();
             this.BackButton = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.CloseLabel = new System.Windows.Forms.Label();
-            this.BodyTypeLabel = new System.Windows.Forms.Label();
+            this.HeaderLabel = new System.Windows.Forms.Label();
             this.BodyPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bodyTypeDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,14 +48,14 @@
             this.BodyPanel.Controls.Add(this.UpdateButton);
             this.BodyPanel.Controls.Add(this.AddButton);
             this.BodyPanel.Controls.Add(this.DeleteButton);
-            this.BodyPanel.Controls.Add(this.bodyTypeDataGridView);
+            this.BodyPanel.Controls.Add(this.DataGridView);
             this.BodyPanel.Controls.Add(this.BackButton);
             this.BodyPanel.Controls.Add(this.HeaderPanel);
             this.BodyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BodyPanel.Location = new System.Drawing.Point(0, 0);
             this.BodyPanel.Name = "BodyPanel";
             this.BodyPanel.Size = new System.Drawing.Size(501, 503);
-            this.BodyPanel.TabIndex = 3;
+            this.BodyPanel.TabIndex = 4;
             // 
             // UpdateButton
             // 
@@ -108,18 +108,18 @@
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // bodyTypeDataGridView
+            // DataGridView
             // 
-            this.bodyTypeDataGridView.AllowUserToAddRows = false;
-            this.bodyTypeDataGridView.AllowUserToDeleteRows = false;
-            this.bodyTypeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.bodyTypeDataGridView.Location = new System.Drawing.Point(40, 106);
-            this.bodyTypeDataGridView.Name = "bodyTypeDataGridView";
-            this.bodyTypeDataGridView.ReadOnly = true;
-            this.bodyTypeDataGridView.RowHeadersWidth = 51;
-            this.bodyTypeDataGridView.RowTemplate.Height = 24;
-            this.bodyTypeDataGridView.Size = new System.Drawing.Size(429, 267);
-            this.bodyTypeDataGridView.TabIndex = 13;
+            this.DataGridView.AllowUserToAddRows = false;
+            this.DataGridView.AllowUserToDeleteRows = false;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.Location = new System.Drawing.Point(40, 106);
+            this.DataGridView.Name = "DataGridView";
+            this.DataGridView.ReadOnly = true;
+            this.DataGridView.RowHeadersWidth = 51;
+            this.DataGridView.RowTemplate.Height = 24;
+            this.DataGridView.Size = new System.Drawing.Size(429, 267);
+            this.DataGridView.TabIndex = 13;
             // 
             // BackButton
             // 
@@ -142,7 +142,7 @@
             // 
             this.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
             this.HeaderPanel.Controls.Add(this.CloseLabel);
-            this.HeaderPanel.Controls.Add(this.BodyTypeLabel);
+            this.HeaderPanel.Controls.Add(this.HeaderLabel);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
@@ -163,29 +163,29 @@
             this.CloseLabel.Text = "X";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
             // 
-            // BodyTypeLabel
+            // HeaderLabel
             // 
-            this.BodyTypeLabel.AutoSize = true;
-            this.BodyTypeLabel.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BodyTypeLabel.ForeColor = System.Drawing.Color.White;
-            this.BodyTypeLabel.Location = new System.Drawing.Point(178, 43);
-            this.BodyTypeLabel.Name = "BodyTypeLabel";
-            this.BodyTypeLabel.Size = new System.Drawing.Size(176, 32);
-            this.BodyTypeLabel.TabIndex = 17;
-            this.BodyTypeLabel.Text = "Типы кузова";
+            this.HeaderLabel.AutoSize = true;
+            this.HeaderLabel.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.HeaderLabel.ForeColor = System.Drawing.Color.White;
+            this.HeaderLabel.Location = new System.Drawing.Point(155, 40);
+            this.HeaderLabel.Name = "HeaderLabel";
+            this.HeaderLabel.Size = new System.Drawing.Size(264, 32);
+            this.HeaderLabel.TabIndex = 17;
+            this.HeaderLabel.Text = "Здесь будет надпись";
             // 
-            // BodyTypeForm
+            // AdminCrudForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 503);
             this.Controls.Add(this.BodyPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "BodyTypeForm";
+            this.Name = "AdminCrudForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BodyTypeForm";
+            this.Text = "AdminCrudForm";
             this.BodyPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bodyTypeDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -195,13 +195,13 @@
         #endregion
 
         private System.Windows.Forms.Panel BodyPanel;
-        private System.Windows.Forms.Label BodyTypeLabel;
+        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Label CloseLabel;
-        private System.Windows.Forms.DataGridView bodyTypeDataGridView;
-        private System.Windows.Forms.Button AddButton;
-        private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button UpdateButton;
+        private System.Windows.Forms.Label HeaderLabel;
     }
 }

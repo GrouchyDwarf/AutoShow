@@ -12,15 +12,17 @@ using AutoShow.Models;
 
 namespace AutoShow
 {
+    public enum Option
+    {
+        Undefined,
+        BodyType,
+        EngineLocation,
+        EngineType,
+        CarBrand,
+        CarModel
+    };
     public partial class AdminMainForm : Form
     {
-        private enum Option
-        {
-            Undefined,
-            BodyType,
-            CarBrand,
-            CarModel
-        };
         private readonly StartForm _startForm;
         private readonly List<Label> _labels;
         private readonly AutoShowContext _context;
@@ -91,12 +93,9 @@ namespace AutoShow
                 MessageBox.Show("Вы не выбрали опцию");
                 return;
             }
-            if(_option == Option.BodyType)
-            {
-                var bodyTypeForm = new BodyTypeForm(_firstName,_lastName, _context, _startForm);
-                bodyTypeForm.Show();
-                this.Close();
-            }
+            var adminCrudForm = new AdminCrudForm(_context, this, _option);
+            adminCrudForm.Show();
+            this.Hide();
         }
     }
 }

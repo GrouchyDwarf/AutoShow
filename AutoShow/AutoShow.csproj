@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminCrudForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminCrudForm.Designer.cs">
+      <DependentUpon>AdminCrudForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,17 +73,35 @@
     <Compile Include="BodyTypeForm.Designer.cs">
       <DependentUpon>BodyTypeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CarBrandForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CarBrandForm.Designer.cs">
+      <DependentUpon>CarBrandForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientRegistrationForm.Designer.cs">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateUpdateAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUpdateAdminForm.Designer.cs">
+      <DependentUpon>CreateUpdateAdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateUpdateBodyTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CreateUpdateBodyTypeForm.Designer.cs">
       <DependentUpon>CreateUpdateBodyTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EngineLocationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EngineLocationForm.Designer.cs">
+      <DependentUpon>EngineLocationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InputValidator.cs" />
     <Compile Include="LoginForm.cs">
@@ -119,17 +143,29 @@
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminCrudForm.resx">
+      <DependentUpon>AdminCrudForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BodyTypeForm.resx">
       <DependentUpon>BodyTypeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CarBrandForm.resx">
+      <DependentUpon>CarBrandForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientRegistrationForm.resx">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateUpdateAdminForm.resx">
+      <DependentUpon>CreateUpdateAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateUpdateBodyTypeForm.resx">
       <DependentUpon>CreateUpdateBodyTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EngineLocationForm.resx">
+      <DependentUpon>EngineLocationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
