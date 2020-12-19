@@ -15,7 +15,7 @@ namespace AutoShow.Models
             Product = new HashSet<Product>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PaintedModelId { get; set; }
 
         public int CarModelId { get; set; }

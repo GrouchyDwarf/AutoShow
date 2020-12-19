@@ -55,11 +55,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminMainForm.Designer.cs">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BodyTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BodyTypeForm.Designer.cs">
+      <DependentUpon>BodyTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientRegistrationForm.Designer.cs">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateUpdateBodyTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateUpdateBodyTypeForm.Designer.cs">
+      <DependentUpon>CreateUpdateBodyTypeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="InputValidator.cs" />
     <Compile Include="LoginForm.cs">
@@ -101,8 +119,17 @@
     <Compile Include="StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminMainForm.resx">
+      <DependentUpon>AdminMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BodyTypeForm.resx">
+      <DependentUpon>BodyTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientRegistrationForm.resx">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateUpdateBodyTypeForm.resx">
+      <DependentUpon>CreateUpdateBodyTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

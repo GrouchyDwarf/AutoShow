@@ -27,7 +27,7 @@ namespace AutoShow.Models
 
         public int ProductId { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PurchaseId { get; set; }
 
         public virtual Client Client { get; set; }

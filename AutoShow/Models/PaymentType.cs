@@ -15,7 +15,7 @@ namespace AutoShow.Models
             Purchase = new HashSet<Purchase>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PaymentTypeId { get; set; }
 
         [Required]

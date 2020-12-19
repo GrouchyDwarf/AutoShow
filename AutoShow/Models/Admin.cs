@@ -9,7 +9,7 @@ namespace AutoShow.Models
     [Table("Admin")]
     public partial class Admin
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int AdminId { get; set; }
 
         [Required]

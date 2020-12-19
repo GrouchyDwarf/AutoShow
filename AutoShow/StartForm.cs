@@ -12,6 +12,7 @@ using AutoShow.Data;
 namespace AutoShow
 {
     public enum Role { 
+            Undefined,
             Admin,
             Manager,
             DeliveryMan,
@@ -37,6 +38,7 @@ namespace AutoShow
 
         private void CloseLabel_Click(object sender, EventArgs e)
         {
+            _context.Dispose();
             Application.Exit();
         }
 
@@ -80,21 +82,35 @@ namespace AutoShow
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var loginForm = new LoginForm(this, _context, _role);
-            loginForm.Show();
+            if (_role != Role.Undefined)
+            {
+                this.Hide();
+                var loginForm = new LoginForm(this, _context, _role);
+                loginForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали статус");
+            }
         }
 
         private void CheckInButton_Click(object sender, EventArgs e)
         {
-            this.Hide();
             Form registrationForm;
             if(_role == Role.Client)
-            {
+            {   
+                this.Hide();
                 registrationForm = new ClientRegistrationForm(this, _context);
-            } else
+            } 
+            else if(_role != Role.Undefined)
             {
+                this.Hide();
                 registrationForm = new RegistrationForm(this, _context, _role);
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали статус");
+                return;
             }
             registrationForm.Show();
         }

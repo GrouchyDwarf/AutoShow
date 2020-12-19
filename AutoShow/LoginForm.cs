@@ -28,6 +28,7 @@ namespace AutoShow
 
         private void CloseLabel_Click(object sender, EventArgs e)
         {
+            _context.Dispose();
             Application.Exit();
         }
 
@@ -47,7 +48,7 @@ namespace AutoShow
                 var clients = _context.Clients.Where(_client => _client.FirstName.Equals(firstName) &&
                                                                _client.LastName.Equals(lastName)    &&
                                                                _client.Password.Equals(password));
-                if(clients.Count() > 0)
+                if(clients.Count() == 1)
                 {
                     MessageBox.Show("Успешная авторизация");
                 }
@@ -89,9 +90,11 @@ namespace AutoShow
                 var admins = _context.Admins.Where(_admin => _admin.FirstName.Equals(firstName) &&
                                                                _admin.LastName.Equals(lastName) &&
                                                                _admin.Password.Equals(password));
-                if (admins.Count() > 0)
+                if (admins.Count() == 1)
                 {
-                    MessageBox.Show("Успешная авторизация");
+                    var adminMainForm = new AdminMainForm(firstName, lastName, _startForm, _context);
+                    adminMainForm.Show();
+                    this.Close();
                 }
                 else
                 {

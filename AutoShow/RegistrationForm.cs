@@ -35,6 +35,7 @@ namespace AutoShow
 
         private void CloseLabel_Click(object sender, EventArgs e)
         {
+            _context.Dispose();
             Application.Exit();
         }
 
@@ -105,7 +106,6 @@ namespace AutoShow
                 }
                 var newAdmin = new Admin
                 {
-                    AdminId = _context.Admins.Count() + 1,
                     FirstName = firstName,
                     LastName = lastName,
                     Password = password
@@ -125,7 +125,6 @@ namespace AutoShow
                 }
                 var newProvider = new Provider
                 {
-                    ProviderId = _context.Providers.Count() + 1,
                     FirstName = firstName,
                     LastName = lastName,
                     Password = password
@@ -145,7 +144,6 @@ namespace AutoShow
                 }
                 var newManager = new Manager
                 {
-                    ManagerId = _context.Managers.Count() + 1,
                     FirstName = firstName,
                     LastName = lastName,
                     Password = password

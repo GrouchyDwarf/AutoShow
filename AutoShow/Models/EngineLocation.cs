@@ -15,7 +15,7 @@ namespace AutoShow.Models
             TechnicalInformation = new HashSet<TechnicalInformation>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EngineLocationId { get; set; }
 
         [Required]

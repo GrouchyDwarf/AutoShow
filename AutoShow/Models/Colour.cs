@@ -15,7 +15,7 @@ namespace AutoShow.Models
             PaintedModel = new HashSet<PaintedModel>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ColourId { get; set; }
 
         [Required]

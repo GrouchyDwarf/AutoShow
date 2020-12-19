@@ -39,6 +39,7 @@ namespace AutoShow
 
         private void CloseLabel_Click(object sender, EventArgs e)
         {
+            _context.Dispose();
             Application.Exit();
         }
 
@@ -133,7 +134,6 @@ namespace AutoShow
             }
             var newClient = new Client
             {
-                ClientId = _context.Clients.Count() + 1,
                 FirstName = firstName,
                 LastName = lastName,
                 Password = password,

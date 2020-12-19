@@ -15,7 +15,7 @@ namespace AutoShow.Models
             CarModel = new HashSet<CarModel>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TechnicalInformationId { get; set; }
 
         public int BodyTypeId { get; set; }

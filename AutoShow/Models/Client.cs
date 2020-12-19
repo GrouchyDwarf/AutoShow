@@ -26,7 +26,7 @@ namespace AutoShow.Models
         [StringLength(20)]
         public string LastName { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClientId { get; set; }
 
         public int PassportId { get; set; }

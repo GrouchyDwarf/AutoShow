@@ -15,7 +15,7 @@ namespace AutoShow.Models
             Supply = new HashSet<Supply>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProviderId { get; set; }
 
         [Required]

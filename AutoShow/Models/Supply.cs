@@ -20,7 +20,7 @@ namespace AutoShow.Models
 
         public decimal Price { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SupplyId { get; set; }
 
         public virtual Product Product { get; set; }
