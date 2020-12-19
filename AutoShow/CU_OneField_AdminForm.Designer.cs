@@ -1,6 +1,6 @@
 ﻿namespace AutoShow
 {
-    partial class CreateUpdateAdminForm
+    partial class CU_OneField_AdminForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,6 @@
             this.BackButton = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.CloseLabel = new System.Windows.Forms.Label();
-            this.HeaderLabel = new System.Windows.Forms.Label();
             this.BodyPanel.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +117,6 @@
             // 
             this.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
             this.HeaderPanel.Controls.Add(this.CloseLabel);
-            this.HeaderPanel.Controls.Add(this.HeaderLabel);
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
@@ -139,25 +137,14 @@
             this.CloseLabel.Text = "X";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
             // 
-            // HeaderLabel
-            // 
-            this.HeaderLabel.AutoSize = true;
-            this.HeaderLabel.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.HeaderLabel.ForeColor = System.Drawing.Color.White;
-            this.HeaderLabel.Location = new System.Drawing.Point(164, 43);
-            this.HeaderLabel.Name = "HeaderLabel";
-            this.HeaderLabel.Size = new System.Drawing.Size(242, 32);
-            this.HeaderLabel.TabIndex = 17;
-            this.HeaderLabel.Text = "Тут будет надпись";
-            // 
-            // CreateUpdateAdminForm
+            // CU_OneField_AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 503);
             this.Controls.Add(this.BodyPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CreateUpdateAdminForm";
+            this.Name = "CU_OneField_AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateUpdateAdminForm";
             this.BodyPanel.ResumeLayout(false);
@@ -177,6 +164,5 @@
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Label CloseLabel;
-        private System.Windows.Forms.Label HeaderLabel;
     }
 }

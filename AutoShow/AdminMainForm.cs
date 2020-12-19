@@ -40,6 +40,8 @@ namespace AutoShow
             _labels = new List<Label>();
             #region InitializeLabelsList
             _labels.Add(BodyTypeLabel);
+            _labels.Add(EngineLocationLabel);
+            _labels.Add(EngineTypeLabel);
             _labels.Add(CarBrandLabel);
             _labels.Add(CarModelLabel);
             #endregion
@@ -80,6 +82,16 @@ namespace AutoShow
             ChangeLabelColor(_labels, CarModelLabel);
             _option = Option.CarModel;
         }
+        private void EngineLocationLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, EngineLocationLabel);
+            _option = Option.EngineLocation;
+        }
+        private void EngineTypeLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, EngineTypeLabel);
+            _option = Option.EngineType;
+        }
         private void BackButton_Click(object sender, EventArgs e)
         {
             _startForm.Show();
@@ -97,5 +109,7 @@ namespace AutoShow
             adminCrudForm.Show();
             this.Hide();
         }
+
+        
     }
 }

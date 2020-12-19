@@ -73,6 +73,7 @@
             this.EngineTypeLabel.Size = new System.Drawing.Size(160, 23);
             this.EngineTypeLabel.TabIndex = 22;
             this.EngineTypeLabel.Text = "Типы двигателя";
+            this.EngineTypeLabel.Click += new System.EventHandler(this.EngineTypeLabel_Click);
             // 
             // EngineLocationLabel
             // 
@@ -85,6 +86,7 @@
             this.EngineLocationLabel.Size = new System.Drawing.Size(158, 23);
             this.EngineLocationLabel.TabIndex = 21;
             this.EngineLocationLabel.Text = "Располож. Двиг.";
+            this.EngineLocationLabel.Click += new System.EventHandler(this.EngineLocationLabel_Click);
             // 
             // CarModelLabel
             // 
