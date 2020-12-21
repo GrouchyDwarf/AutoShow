@@ -79,6 +79,12 @@
     <Compile Include="CU_OneField_AdminForm.Designer.cs">
       <DependentUpon>CU_OneField_AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CU_TechnicalInformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CU_TechnicalInformationForm.Designer.cs">
+      <DependentUpon>CU_TechnicalInformationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputValidator.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CU_OneField_AdminForm.resx">
       <DependentUpon>CU_OneField_AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CU_TechnicalInformationForm.resx">
+      <DependentUpon>CU_TechnicalInformationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

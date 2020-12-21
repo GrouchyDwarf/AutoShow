@@ -16,7 +16,7 @@ namespace AutoShow.Models
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int BodyTypeID { get; set; }
+        public int BodyTypeId { get; set; }
 
         [Required]
         [StringLength(30)]

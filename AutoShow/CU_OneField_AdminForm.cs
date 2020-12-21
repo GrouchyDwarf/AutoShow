@@ -34,6 +34,7 @@ namespace AutoShow
             _adminCrudForm = adminCrudForm;
             _option = option;
             _bodyType = bodyType;
+            TextBox.Text = _bodyType.BodyTypeName;
         }
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in EngineLocation engineLocation)
         {
@@ -42,6 +43,7 @@ namespace AutoShow
             _adminCrudForm = adminCrudForm;
             _option = option;
             _engineLocation = engineLocation;
+            TextBox.Text = _engineLocation.EngineLocationName;
         }
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in EngineType engineType)
         {
@@ -50,6 +52,7 @@ namespace AutoShow
             _adminCrudForm = adminCrudForm;
             _option = option;
             _engineType = engineType;
+            TextBox.Text = _engineType.EngineTypeName;
         }
         private void CloseLabel_Click(object sender, EventArgs e)
         {
@@ -67,6 +70,11 @@ namespace AutoShow
             if (_bodyType != null || _engineLocation != null || _engineType != null)
             {
                 MessageBox.Show("Вы перепутали обновление и создание");
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(TextBox.Text))
+            {
+                MessageBox.Show("Заполните поле");
                 return;
             }
             if (_option == Option.BodyType)

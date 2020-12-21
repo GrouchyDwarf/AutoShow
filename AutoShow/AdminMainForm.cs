@@ -18,6 +18,7 @@ namespace AutoShow
         BodyType,
         EngineLocation,
         EngineType,
+        TechnicalInformation,
         CarBrand,
         CarModel
     };
@@ -42,6 +43,7 @@ namespace AutoShow
             _labels.Add(BodyTypeLabel);
             _labels.Add(EngineLocationLabel);
             _labels.Add(EngineTypeLabel);
+            _labels.Add(TechnicalInformationLabel);
             _labels.Add(CarBrandLabel);
             _labels.Add(CarModelLabel);
             #endregion
@@ -91,6 +93,11 @@ namespace AutoShow
         {
             ChangeLabelColor(_labels, EngineTypeLabel);
             _option = Option.EngineType;
+        }
+        private void TechnicalInformationLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, TechnicalInformationLabel);
+            _option = Option.TechnicalInformation;
         }
         private void BackButton_Click(object sender, EventArgs e)
         {

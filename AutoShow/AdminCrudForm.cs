@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AutoShow.Data;
+using AutoShow.Models;
 
 namespace AutoShow
 {
@@ -29,13 +30,23 @@ namespace AutoShow
             }
             else if(_option == Option.EngineLocation)
             {
-                HeaderLabel.Text = "Распол.двиг.";
+                HeaderLabel.Text = "Распол.Двигателя";
                 DataGridView.DataSource = _context.EngineLocations.Select(e => new { e.EngineLocationName }).ToList();
             }
             else if(_option == Option.EngineType)
             {
                 HeaderLabel.Text = "Типы двигателя";
                 DataGridView.DataSource = _context.EngineTypes.Select(e => new { e.EngineTypeName }).ToList();
+            }
+            else if(_option == Option.TechnicalInformation)
+            {
+                HeaderLabel.Text = "Тех.Данные";
+                DataGridView.DataSource = _context.TechnicalInformations.Select(t => new { t.BodyType.BodyTypeName,
+                                                                                           t.EngineType.EngineTypeName,
+                                                                                           t.EngineDisplacement,
+                                                                                           t.DoorsAmount,
+                                                                                           t.EngineLocation.EngineLocationName,
+                                                                                           t.SeatsAmount}).ToList();
             }
         }
 
@@ -53,6 +64,17 @@ namespace AutoShow
             {
                 DataGridView.DataSource = _context.EngineTypes.Select(e => new { e.EngineTypeName }).ToList();
             }
+            else if(_option == Option.TechnicalInformation)
+            {
+                DataGridView.DataSource = _context.TechnicalInformations.Select(t => new {
+                    t.BodyType.BodyTypeName,
+                    t.EngineType.EngineTypeName,
+                    t.EngineDisplacement,
+                    t.DoorsAmount,
+                    t.EngineLocation.EngineLocationName,
+                    t.SeatsAmount
+                }).ToList();
+            }
         }
 
         private void CloseLabel_Click(object sender, EventArgs e)
@@ -69,8 +91,16 @@ namespace AutoShow
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option);
-            createUpdateAdminForm.Show();
+            if (_option == Option.BodyType || _option == Option.EngineType || _option == Option.EngineLocation)
+            {
+                var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option);
+                createUpdateAdminForm.Show();
+            }
+            else if(_option == Option.TechnicalInformation)
+            {
+                var createUpdateAdminForm = new CU_TechnicalInformationForm(_context, this);
+                createUpdateAdminForm.Show(); 
+            }
             this.Hide();
         }
 
@@ -89,26 +119,41 @@ namespace AutoShow
             if (_option == Option.BodyType)
             {
                 string bodyTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
-                var bodyType = _context.BodyTypes.Single(b => b.BodyTypeName == bodyTypeName);
+                var bodyType = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName);
                 var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option, bodyType);
                 createUpdateAdminForm.Show();
             }
             else if(_option == Option.EngineLocation)
             {
                 string engineLocationName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
-                var engineLocation = _context.EngineLocations.Single(en => en.EngineLocationName == engineLocationName);
+                var engineLocation = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName);
                 var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option, engineLocation);
                 createUpdateAdminForm.Show();
             }
             else if(_option == Option.EngineType)
             {
                 string engineTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
-                var engineType = _context.EngineTypes.Single(en => en.EngineTypeName == engineTypeName);
+                var engineType = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName);
                 var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option, engineType);
                 createUpdateAdminForm.Show();
             }
+            else if(_option == Option.TechnicalInformation)
+            {
+                string bodyTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string engineTypeName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string engineLocationName = DataGridView[4, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
+                int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
+                int engineDisplacement = int.Parse(DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString());
+                int doorsAmount = int.Parse(DataGridView[3, DataGridView.SelectedRows[0].Index].Value.ToString());
+                int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+                int seatsAmount = int.Parse(DataGridView[5, DataGridView.SelectedRows[0].Index].Value.ToString());
+                var technicalInforamtion = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId &&
+                t.EngineDisplacement == engineDisplacement && t.DoorsAmount == doorsAmount && t.EngineLocationId == engineLocationId && t.SeatsAmount == seatsAmount);
+                var createUpdateAdminForm = new CU_TechnicalInformationForm(_context, this, technicalInforamtion);
+                createUpdateAdminForm.Show();
+            }
             this.Hide();
-            
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -126,17 +171,49 @@ namespace AutoShow
             if (_option == Option.BodyType)
             {
                 string bodyTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
-                _context.BodyTypes.Remove(_context.BodyTypes.Single(b => b.BodyTypeName == bodyTypeName));
+                var technicalInformation = _context.TechnicalInformations.Where(t => t.BodyType.BodyTypeName == bodyTypeName).FirstOrDefault();
+                if (technicalInformation != null)
+                {
+                    MessageBox.Show("Данный тип кузова присутсвует в технической информации,поэтому для начала удалите все связанные данные");
+                    return;
+                }
+                _context.BodyTypes.Remove(_context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName));
             }
             else if(_option == Option.EngineLocation)
             {
                 string engineLocationName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
-                _context.EngineLocations.Remove(_context.EngineLocations.Single(en => en.EngineLocationName == engineLocationName));
+                var technicalInformation = _context.TechnicalInformations.Where(t => t.EngineLocation.EngineLocationName == engineLocationName).FirstOrDefault();
+                if (technicalInformation != null)
+                {
+                    MessageBox.Show("Данное расположения двигателя присутсвует в технической информации,поэтому для начала удалите все связанные данные");
+                    return;
+                }
+                _context.EngineLocations.Remove(_context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName));
             }
             else if(_option == Option.EngineType)
             {
                 string engineTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
-                _context.EngineTypes.Remove(_context.EngineTypes.Single(en => en.EngineTypeName == engineTypeName));
+                var technicalInformation = _context.TechnicalInformations.Where(t => t.EngineType.EngineTypeName == engineTypeName).FirstOrDefault();
+                if (technicalInformation != null)
+                {
+                    MessageBox.Show("Данный тип двигателя присутсвует в технической информации,поэтому для начала удалите все связанные данные");
+                    return;
+                }
+                _context.EngineTypes.Remove(_context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName));
+            }
+            else if(_option == Option.TechnicalInformation)
+            {
+                string bodyTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string engineTypeName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string engineLocationName = DataGridView[4, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
+                int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
+                int EngineDisplacement = int.Parse(DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString());
+                int doorsAmount = int.Parse(DataGridView[3, DataGridView.SelectedRows[0].Index].Value.ToString());
+                int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+                int seatsAmount = int.Parse(DataGridView[5, DataGridView.SelectedRows[0].Index].Value.ToString());
+                _context.TechnicalInformations.Remove(_context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId &&
+                t.EngineDisplacement == EngineDisplacement && t.DoorsAmount == doorsAmount && t.EngineLocationId == engineLocationId && t.SeatsAmount == seatsAmount));
             }
             if (_context.SaveChanges() > 0)
             {
