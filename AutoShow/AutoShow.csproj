@@ -73,6 +73,12 @@
     <Compile Include="ClientRegistrationForm.Designer.cs">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CU_CarModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CU_CarModelForm.Designer.cs">
+      <DependentUpon>CU_CarModelForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CU_OneField_AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientRegistrationForm.resx">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CU_CarModelForm.resx">
+      <DependentUpon>CU_CarModelForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CU_OneField_AdminForm.resx">
       <DependentUpon>CU_OneField_AdminForm.cs</DependentUpon>

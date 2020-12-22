@@ -28,14 +28,9 @@ namespace AutoShow
             
         }
         public CU_TechnicalInformationForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in TechnicalInformation technicalInformation)
+        :this(context, adminCrudForm)
         {
-            InitializeComponent();
-            _context = context;
-            _adminCrudForm = adminCrudForm;
             _technicalInformation = technicalInformation;
-            BodyTypeComboBox.Items.AddRange(_context.BodyTypes.Select(b => b.BodyTypeName).ToArray());
-            EngineTypeComboBox.Items.AddRange(_context.EngineTypes.Select(en => en.EngineTypeName).ToArray());
-            EngineLocationComboBox.Items.AddRange(_context.EngineLocations.Select(en => en.EngineLocationName).ToArray());
             BodyTypeComboBox.Text = _technicalInformation.BodyType.BodyTypeName;
             EngineTypeComboBox.Text = _technicalInformation.EngineType.EngineTypeName;
             EngineLocationComboBox.Text = _technicalInformation.EngineLocation.EngineLocationName;
@@ -104,10 +99,20 @@ namespace AutoShow
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
             }
-            var technicalInformation = _context.TechnicalInformations.Where(t => t.BodyTypeId ==_technicalInformation.BodyTypeId &&
+            var technicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId ==_technicalInformation.BodyTypeId &&
             t.DoorsAmount == _technicalInformation.DoorsAmount && t.EngineDisplacement == _technicalInformation.EngineDisplacement &&
             t.EngineLocationId == _technicalInformation.EngineLocationId && t.EngineTypeId == _technicalInformation.EngineTypeId &&
-            t.SeatsAmount == _technicalInformation.SeatsAmount).FirstOrDefault();
+            t.SeatsAmount == _technicalInformation.SeatsAmount);
+
+            var existingTuple = _context.TechnicalInformations.FirstOrDefault(t => t.BodyType.BodyTypeName == BodyTypeComboBox.Text &&
+            t.DoorsAmount == (int)DoorsAmountNumericUpDown.Value && t.EngineDisplacement == (int)EngineDisplacementNumericUpDown.Value &&
+            t.EngineLocation.EngineLocationName == EngineLocationComboBox.Text && t.EngineType.EngineTypeName == EngineTypeComboBox.Text &&
+            t.SeatsAmount == (int)SeatsAmountNumericUpDown.Value);
+            if (existingTuple != null)
+            {
+                MessageBox.Show("Такие тех данные уже существуют");
+                return;
+            }
             technicalInformation.BodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == BodyTypeComboBox.Text).BodyTypeId;
             technicalInformation.EngineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == EngineTypeComboBox.Text).EngineTypeId;
             technicalInformation.EngineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == EngineLocationComboBox.Text).EngineLocationId;

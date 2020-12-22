@@ -30,47 +30,32 @@ namespace AutoShow
             _option = option;
         }
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in BodyType bodyType)
+        :this(context,adminCrudForm,option)
         {
-            InitializeComponent();
-            _context = context;
-            _adminCrudForm = adminCrudForm;
-            _option = option;
             _bodyType = bodyType;
             TextBox.Text = _bodyType.BodyTypeName;
         }
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in EngineLocation engineLocation)
+        : this(context, adminCrudForm, option)
         {
-            InitializeComponent();
-            _context = context;
-            _adminCrudForm = adminCrudForm;
-            _option = option;
             _engineLocation = engineLocation;
             TextBox.Text = _engineLocation.EngineLocationName;
         }
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in EngineType engineType)
+        : this(context, adminCrudForm, option)
         {
-            InitializeComponent();
-            _context = context;
-            _adminCrudForm = adminCrudForm;
-            _option = option;
             _engineType = engineType;
             TextBox.Text = _engineType.EngineTypeName;
         }
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in CarBrand carBrand)
+        : this(context, adminCrudForm, option)
         {
-            InitializeComponent();
-            _context = context;
-            _adminCrudForm = adminCrudForm;
-            _option = option;
             _carBrand = carBrand;
             TextBox.Text = _carBrand.CarBrandName;
         }
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in Country country)
+        : this(context, adminCrudForm, option)
         {
-            InitializeComponent();
-            _context = context;
-            _adminCrudForm = adminCrudForm;
-            _option = option;
             _country = country;
             TextBox.Text = _country.CountryName;
         }
@@ -188,27 +173,57 @@ namespace AutoShow
             }
             if (_option == Option.BodyType)
             {
-                var bodyType = _context.BodyTypes.Where(b => b.BodyTypeName == _bodyType.BodyTypeName).FirstOrDefault();
+                var bodyType = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == _bodyType.BodyTypeName);
+                var existingTuple = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == TextBox.Text);
+                if(existingTuple != null)
+                {
+                    MessageBox.Show("Такой тип кузова уже существует");
+                    return;
+                }
                 bodyType.BodyTypeName = TextBox.Text;
             }
             else if(_option == Option.EngineLocation)
             {
-                var engineLocation = _context.EngineLocations.Where(en => en.EngineLocationName == _engineLocation.EngineLocationName).FirstOrDefault();
+                var engineLocation = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == _engineLocation.EngineLocationName);
+                var existingTuple = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == TextBox.Text);
+                if (existingTuple != null)
+                {
+                    MessageBox.Show("Такой тип кузова уже существует");
+                    return;
+                }
                 engineLocation.EngineLocationName = TextBox.Text;
             }
             else if(_option == Option.EngineType)
             {
-                var engineType = _context.EngineTypes.Where(en => en.EngineTypeName == _engineType.EngineTypeName).FirstOrDefault();
+                var engineType = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == _engineType.EngineTypeName);
+                var existingTuple = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == TextBox.Text);
+                if (existingTuple != null)
+                {
+                    MessageBox.Show("Такой тип кузова уже существует");
+                    return;
+                }
                 engineType.EngineTypeName = TextBox.Text;
             }
             else if (_option == Option.CarBrand)
             {
-                var carBrand = _context.CarBrands.Where(c => c.CarBrandName == _carBrand.CarBrandName).FirstOrDefault();
+                var carBrand = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == _carBrand.CarBrandName);
+                var existingTuple = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == TextBox.Text);
+                if (existingTuple != null)
+                {
+                    MessageBox.Show("Такой тип кузова уже существует");
+                    return;
+                }
                 carBrand.CarBrandName = TextBox.Text;
             }
             else if (_option == Option.Country)
             {
-                var country = _context.Countries.Where(c => c.CountryName == _country.CountryName).FirstOrDefault();
+                var country = _context.Countries.FirstOrDefault(c => c.CountryName == _country.CountryName);
+                var existingTuple = _context.Countries.FirstOrDefault(c => c.CountryName == TextBox.Text);
+                if (existingTuple != null)
+                {
+                    MessageBox.Show("Такой тип кузова уже существует");
+                    return;
+                }
                 country.CountryName = TextBox.Text;
             }
             if (_context.SaveChanges() > 0)

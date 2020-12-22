@@ -80,12 +80,6 @@ namespace AutoShow
             ChangeLabelColor(_labels, CarBrandLabel);
             _option = Option.CarBrand;
         }
-
-        private void CarModelLabel_Click(object sender, EventArgs e)
-        {
-            ChangeLabelColor(_labels, CarModelLabel);
-            _option = Option.CarModel;
-        }
         private void EngineLocationLabel_Click(object sender, EventArgs e)
         {
             ChangeLabelColor(_labels, EngineLocationLabel);
@@ -105,6 +99,11 @@ namespace AutoShow
         {
             ChangeLabelColor(_labels, CountryLabel);
             _option = Option.Country;
+        }
+        private void CarModelLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, CarModelLabel);
+            _option = Option.CarModel;
         }
         private void BackButton_Click(object sender, EventArgs e)
         {
