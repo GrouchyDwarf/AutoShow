@@ -30,7 +30,7 @@
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
             this.UpdateButton = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
+            this.CreateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.BackButton = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
             this.BodyPanel.Controls.Add(this.UpdateButton);
-            this.BodyPanel.Controls.Add(this.AddButton);
+            this.BodyPanel.Controls.Add(this.CreateButton);
             this.BodyPanel.Controls.Add(this.DeleteButton);
             this.BodyPanel.Controls.Add(this.DataGridView);
             this.BodyPanel.Controls.Add(this.BackButton);
@@ -74,22 +74,22 @@
             this.UpdateButton.UseVisualStyleBackColor = false;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
-            // AddButton
+            // CreateButton
             // 
-            this.AddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
-            this.AddButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddButton.FlatAppearance.BorderSize = 0;
-            this.AddButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
-            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddButton.ForeColor = System.Drawing.Color.White;
-            this.AddButton.Location = new System.Drawing.Point(313, 450);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(156, 41);
-            this.AddButton.TabIndex = 15;
-            this.AddButton.Text = "Создать";
-            this.AddButton.UseVisualStyleBackColor = false;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            this.CreateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
+            this.CreateButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CreateButton.FlatAppearance.BorderSize = 0;
+            this.CreateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
+            this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateButton.ForeColor = System.Drawing.Color.White;
+            this.CreateButton.Location = new System.Drawing.Point(313, 450);
+            this.CreateButton.Name = "CreateButton";
+            this.CreateButton.Size = new System.Drawing.Size(156, 41);
+            this.CreateButton.TabIndex = 15;
+            this.CreateButton.Text = "Создать";
+            this.CreateButton.UseVisualStyleBackColor = false;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // DeleteButton
             // 
@@ -196,7 +196,7 @@
 
         private System.Windows.Forms.Panel BodyPanel;
         private System.Windows.Forms.Button UpdateButton;
-        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.DataGridView DataGridView;
         private System.Windows.Forms.Button BackButton;

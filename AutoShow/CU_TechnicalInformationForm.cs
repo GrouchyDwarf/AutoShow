@@ -78,7 +78,7 @@ namespace AutoShow
             t.EngineLocationId == engineLocationId && t.DoorsAmount == doorsAmount && t.SeatsAmount == seatsAmount && t.EngineDisplacement == engineDisplacement);
             if (technicalInformation != null)
             {
-                MessageBox.Show("Такой тип кузова уже существует");
+                MessageBox.Show("Такая техническая информация уже существует");
                 return;
             }
             var newTechnicalInformation = new TechnicalInformation

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.CountryLabel = new System.Windows.Forms.Label();
+            this.TechnicalInformationLabel = new System.Windows.Forms.Label();
             this.EngineTypeLabel = new System.Windows.Forms.Label();
             this.EngineLocationLabel = new System.Windows.Forms.Label();
             this.CarModelLabel = new System.Windows.Forms.Label();
@@ -40,7 +42,6 @@
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.AdminInfoLabel = new System.Windows.Forms.Label();
             this.CloseLabel = new System.Windows.Forms.Label();
-            this.TechnicalInformationLabel = new System.Windows.Forms.Label();
             this.BodyPanel.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +49,7 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
+            this.BodyPanel.Controls.Add(this.CountryLabel);
             this.BodyPanel.Controls.Add(this.TechnicalInformationLabel);
             this.BodyPanel.Controls.Add(this.EngineTypeLabel);
             this.BodyPanel.Controls.Add(this.EngineLocationLabel);
@@ -63,6 +65,32 @@
             this.BodyPanel.Name = "BodyPanel";
             this.BodyPanel.Size = new System.Drawing.Size(501, 503);
             this.BodyPanel.TabIndex = 2;
+            // 
+            // CountryLabel
+            // 
+            this.CountryLabel.AutoSize = true;
+            this.CountryLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CountryLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CountryLabel.ForeColor = System.Drawing.Color.White;
+            this.CountryLabel.Location = new System.Drawing.Point(376, 224);
+            this.CountryLabel.Name = "CountryLabel";
+            this.CountryLabel.Size = new System.Drawing.Size(81, 23);
+            this.CountryLabel.TabIndex = 24;
+            this.CountryLabel.Text = "Страны";
+            this.CountryLabel.Click += new System.EventHandler(this.CountryLabel_Click);
+            // 
+            // TechnicalInformationLabel
+            // 
+            this.TechnicalInformationLabel.AutoSize = true;
+            this.TechnicalInformationLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TechnicalInformationLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TechnicalInformationLabel.ForeColor = System.Drawing.Color.White;
+            this.TechnicalInformationLabel.Location = new System.Drawing.Point(12, 224);
+            this.TechnicalInformationLabel.Name = "TechnicalInformationLabel";
+            this.TechnicalInformationLabel.Size = new System.Drawing.Size(121, 23);
+            this.TechnicalInformationLabel.TabIndex = 23;
+            this.TechnicalInformationLabel.Text = "Тех.Данные";
+            this.TechnicalInformationLabel.Click += new System.EventHandler(this.TechnicalInformationLabel_Click);
             // 
             // EngineTypeLabel
             // 
@@ -96,7 +124,7 @@
             this.CarModelLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CarModelLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CarModelLabel.ForeColor = System.Drawing.Color.White;
-            this.CarModelLabel.Location = new System.Drawing.Point(389, 224);
+            this.CarModelLabel.Location = new System.Drawing.Point(26, 286);
             this.CarModelLabel.Name = "CarModelLabel";
             this.CarModelLabel.Size = new System.Drawing.Size(80, 23);
             this.CarModelLabel.TabIndex = 20;
@@ -210,19 +238,6 @@
             this.CloseLabel.Text = "X";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
             // 
-            // TechnicalInformationLabel
-            // 
-            this.TechnicalInformationLabel.AutoSize = true;
-            this.TechnicalInformationLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.TechnicalInformationLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TechnicalInformationLabel.ForeColor = System.Drawing.Color.White;
-            this.TechnicalInformationLabel.Location = new System.Drawing.Point(12, 224);
-            this.TechnicalInformationLabel.Name = "TechnicalInformationLabel";
-            this.TechnicalInformationLabel.Size = new System.Drawing.Size(121, 23);
-            this.TechnicalInformationLabel.TabIndex = 23;
-            this.TechnicalInformationLabel.Text = "Тех.Данные";
-            this.TechnicalInformationLabel.Click += new System.EventHandler(this.TechnicalInformationLabel_Click);
-            // 
             // AdminMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,5 +271,6 @@
         private System.Windows.Forms.Label EngineTypeLabel;
         private System.Windows.Forms.Label EngineLocationLabel;
         private System.Windows.Forms.Label TechnicalInformationLabel;
+        private System.Windows.Forms.Label CountryLabel;
     }
 }

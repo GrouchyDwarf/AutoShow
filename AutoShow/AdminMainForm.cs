@@ -20,6 +20,7 @@ namespace AutoShow
         EngineType,
         TechnicalInformation,
         CarBrand,
+        Country,
         CarModel
     };
     public partial class AdminMainForm : Form
@@ -45,6 +46,7 @@ namespace AutoShow
             _labels.Add(EngineTypeLabel);
             _labels.Add(TechnicalInformationLabel);
             _labels.Add(CarBrandLabel);
+            _labels.Add(CountryLabel);
             _labels.Add(CarModelLabel);
             #endregion
 
@@ -99,6 +101,11 @@ namespace AutoShow
             ChangeLabelColor(_labels, TechnicalInformationLabel);
             _option = Option.TechnicalInformation;
         }
+        private void CountryLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, CountryLabel);
+            _option = Option.Country;
+        }
         private void BackButton_Click(object sender, EventArgs e)
         {
             _startForm.Show();
@@ -116,7 +123,5 @@ namespace AutoShow
             adminCrudForm.Show();
             this.Hide();
         }
-
-        
     }
 }

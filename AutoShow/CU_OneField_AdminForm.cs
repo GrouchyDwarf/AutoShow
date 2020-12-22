@@ -19,6 +19,8 @@ namespace AutoShow
         private readonly BodyType _bodyType;
         private readonly EngineLocation _engineLocation;
         private readonly EngineType _engineType;
+        private readonly CarBrand _carBrand;
+        private readonly Country _country;
         private readonly Option _option;
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option)
         {
@@ -54,6 +56,24 @@ namespace AutoShow
             _engineType = engineType;
             TextBox.Text = _engineType.EngineTypeName;
         }
+        public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in CarBrand carBrand)
+        {
+            InitializeComponent();
+            _context = context;
+            _adminCrudForm = adminCrudForm;
+            _option = option;
+            _carBrand = carBrand;
+            TextBox.Text = _carBrand.CarBrandName;
+        }
+        public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in Country country)
+        {
+            InitializeComponent();
+            _context = context;
+            _adminCrudForm = adminCrudForm;
+            _option = option;
+            _country = country;
+            TextBox.Text = _country.CountryName;
+        }
         private void CloseLabel_Click(object sender, EventArgs e)
         {
             _context.Dispose();
@@ -64,10 +84,10 @@ namespace AutoShow
             _adminCrudForm.Show();
             this.Close();
         }
-        
+
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            if (_bodyType != null || _engineLocation != null || _engineType != null)
+            if (_bodyType != null || _engineLocation != null || _engineType != null || _carBrand != null || _country != null)
             {
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
@@ -113,7 +133,7 @@ namespace AutoShow
                 var engineType = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName);
                 if (engineType != null)
                 {
-                    MessageBox.Show("Такое расположение уже существует");
+                    MessageBox.Show("Такой тип двигателя уже существует");
                     return;
                 }
                 var newEngineType = new EngineType
@@ -121,6 +141,36 @@ namespace AutoShow
                     EngineTypeName = engineTypeName
                 };
                 _context.EngineTypes.Add(newEngineType);
+            }
+            else if(_option == Option.CarBrand)
+            {
+                string carBrandName = TextBox.Text;
+                var carBrand = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName);
+                if (carBrand != null)
+                {
+                    MessageBox.Show("Такая марка уже существует");
+                    return;
+                }
+                var newCarBrand = new CarBrand
+                {
+                    CarBrandName = carBrandName
+                };
+                _context.CarBrands.Add(newCarBrand);
+            }
+            else if (_option == Option.Country)
+            {
+                string countryName = TextBox.Text;
+                var country = _context.Countries.FirstOrDefault(c => c.CountryName == countryName);
+                if (country != null)
+                {
+                    MessageBox.Show("Такая страна уже существует");
+                    return;
+                }
+                var newCountry = new Country
+                {
+                    CountryName = countryName
+                };
+                _context.Countries.Add(newCountry);
             }
             if (_context.SaveChanges() > 0)
             {
@@ -131,7 +181,7 @@ namespace AutoShow
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            if (_bodyType == null && _engineLocation == null && _engineType == null)
+            if (_bodyType == null && _engineLocation == null && _engineType == null && _carBrand == null && _country == null)
             {
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
@@ -150,6 +200,16 @@ namespace AutoShow
             {
                 var engineType = _context.EngineTypes.Where(en => en.EngineTypeName == _engineType.EngineTypeName).FirstOrDefault();
                 engineType.EngineTypeName = TextBox.Text;
+            }
+            else if (_option == Option.CarBrand)
+            {
+                var carBrand = _context.CarBrands.Where(c => c.CarBrandName == _carBrand.CarBrandName).FirstOrDefault();
+                carBrand.CarBrandName = TextBox.Text;
+            }
+            else if (_option == Option.Country)
+            {
+                var country = _context.Countries.Where(c => c.CountryName == _country.CountryName).FirstOrDefault();
+                country.CountryName = TextBox.Text;
             }
             if (_context.SaveChanges() > 0)
             {
