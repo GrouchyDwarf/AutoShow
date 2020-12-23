@@ -21,7 +21,10 @@ namespace AutoShow
         TechnicalInformation,
         CarBrand,
         Country,
-        CarModel
+        CarModel,
+        Colour,
+        PaintedModel,
+        Product
     };
     public partial class AdminMainForm : Form
     {
@@ -48,6 +51,9 @@ namespace AutoShow
             _labels.Add(CarBrandLabel);
             _labels.Add(CountryLabel);
             _labels.Add(CarModelLabel);
+            _labels.Add(ColourLabel);
+            _labels.Add(PaintedModelLabel);
+            _labels.Add(ProductLabel);
             #endregion
 
         }
@@ -105,6 +111,21 @@ namespace AutoShow
             ChangeLabelColor(_labels, CarModelLabel);
             _option = Option.CarModel;
         }
+        private void ColourLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, ColourLabel);
+            _option = Option.Colour;
+        }
+        private void PaintedModelLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, PaintedModelLabel);
+            _option = Option.PaintedModel;
+        }
+        private void ProductLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, ProductLabel);
+            _option = Option.Product;
+        }
         private void BackButton_Click(object sender, EventArgs e)
         {
             _startForm.Show();
@@ -121,6 +142,6 @@ namespace AutoShow
             var adminCrudForm = new AdminCrudForm(_context, this, _option);
             adminCrudForm.Show();
             this.Hide();
-        }
+        }     
     }
 }

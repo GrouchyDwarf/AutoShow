@@ -1,6 +1,6 @@
 ﻿namespace AutoShow
 {
-    partial class CU_CarModelForm
+    partial class CU_PaintedModelForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.ColourLabel = new System.Windows.Forms.Label();
+            this.ColourComboBox = new System.Windows.Forms.ComboBox();
             this.EngineDisplacementLabel = new System.Windows.Forms.Label();
             this.SeatsAmountLabel = new System.Windows.Forms.Label();
             this.CarModelNameLabel = new System.Windows.Forms.Label();
@@ -62,6 +64,8 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
+            this.BodyPanel.Controls.Add(this.ColourLabel);
+            this.BodyPanel.Controls.Add(this.ColourComboBox);
             this.BodyPanel.Controls.Add(this.EngineDisplacementLabel);
             this.BodyPanel.Controls.Add(this.SeatsAmountLabel);
             this.BodyPanel.Controls.Add(this.CarModelNameLabel);
@@ -87,8 +91,28 @@
             this.BodyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BodyPanel.Location = new System.Drawing.Point(0, 0);
             this.BodyPanel.Name = "BodyPanel";
-            this.BodyPanel.Size = new System.Drawing.Size(626, 503);
-            this.BodyPanel.TabIndex = 7;
+            this.BodyPanel.Size = new System.Drawing.Size(626, 532);
+            this.BodyPanel.TabIndex = 8;
+            // 
+            // ColourLabel
+            // 
+            this.ColourLabel.AutoSize = true;
+            this.ColourLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ColourLabel.ForeColor = System.Drawing.Color.White;
+            this.ColourLabel.Location = new System.Drawing.Point(296, 353);
+            this.ColourLabel.Name = "ColourLabel";
+            this.ColourLabel.Size = new System.Drawing.Size(65, 23);
+            this.ColourLabel.TabIndex = 38;
+            this.ColourLabel.Text = "Цвета";
+            // 
+            // ColourComboBox
+            // 
+            this.ColourComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ColourComboBox.FormattingEnabled = true;
+            this.ColourComboBox.Location = new System.Drawing.Point(300, 389);
+            this.ColourComboBox.Name = "ColourComboBox";
+            this.ColourComboBox.Size = new System.Drawing.Size(167, 31);
+            this.ColourComboBox.TabIndex = 37;
             // 
             // EngineDisplacementLabel
             // 
@@ -291,7 +315,7 @@
             this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateButton.ForeColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(449, 426);
+            this.CreateButton.Location = new System.Drawing.Point(449, 457);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(151, 41);
             this.CreateButton.TabIndex = 15;
@@ -308,7 +332,7 @@
             this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UpdateButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(40, 357);
+            this.UpdateButton.Location = new System.Drawing.Point(40, 389);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(161, 41);
             this.UpdateButton.TabIndex = 14;
@@ -325,7 +349,7 @@
             this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BackButton.ForeColor = System.Drawing.Color.White;
-            this.BackButton.Location = new System.Drawing.Point(40, 426);
+            this.BackButton.Location = new System.Drawing.Point(40, 457);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(161, 41);
             this.BackButton.TabIndex = 11;
@@ -357,16 +381,16 @@
             this.CloseLabel.Text = "X";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
             // 
-            // CU_CarModelForm
+            // CU_PaintedModelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 503);
+            this.ClientSize = new System.Drawing.Size(626, 532);
             this.Controls.Add(this.BodyPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CU_CarModelForm";
+            this.Name = "CU_PaintedModelForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CU_CarModelForm";
+            this.Text = "CU_PaintedModelForm";
             this.BodyPanel.ResumeLayout(false);
             this.BodyPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EngineDisplacementNumericUpDown)).EndInit();
@@ -381,6 +405,10 @@
         #endregion
 
         private System.Windows.Forms.Panel BodyPanel;
+        private System.Windows.Forms.Label EngineDisplacementLabel;
+        private System.Windows.Forms.Label SeatsAmountLabel;
+        private System.Windows.Forms.Label CarModelNameLabel;
+        private System.Windows.Forms.TextBox CarModelNameTextBox;
         private System.Windows.Forms.Label CountryLabel;
         private System.Windows.Forms.Label CarBrandLabel;
         private System.Windows.Forms.ComboBox CountryComboBox;
@@ -400,9 +428,7 @@
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Label CloseLabel;
-        private System.Windows.Forms.Label CarModelNameLabel;
-        private System.Windows.Forms.TextBox CarModelNameTextBox;
-        private System.Windows.Forms.Label EngineDisplacementLabel;
-        private System.Windows.Forms.Label SeatsAmountLabel;
+        private System.Windows.Forms.Label ColourLabel;
+        private System.Windows.Forms.ComboBox ColourComboBox;
     }
 }

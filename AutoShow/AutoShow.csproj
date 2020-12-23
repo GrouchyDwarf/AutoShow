@@ -85,6 +85,18 @@
     <Compile Include="CU_OneField_AdminForm.Designer.cs">
       <DependentUpon>CU_OneField_AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CU_PaintedModelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CU_PaintedModelForm.Designer.cs">
+      <DependentUpon>CU_PaintedModelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CU_ProductForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CU_ProductForm.Designer.cs">
+      <DependentUpon>CU_ProductForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CU_TechnicalInformationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +157,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CU_OneField_AdminForm.resx">
       <DependentUpon>CU_OneField_AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CU_PaintedModelForm.resx">
+      <DependentUpon>CU_PaintedModelForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CU_ProductForm.resx">
+      <DependentUpon>CU_ProductForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CU_TechnicalInformationForm.resx">
       <DependentUpon>CU_TechnicalInformationForm.cs</DependentUpon>

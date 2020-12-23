@@ -74,6 +74,46 @@ namespace AutoShow
                     c.TechnicalInformation.SeatsAmount
                 }).ToList();
             }
+            else if(_option == Option.Colour)
+            {
+                HeaderLabel.Text = "Цвета";
+                DataGridView.DataSource = _context.Colours.Select(c => new { c.ColourName }).ToList();
+            }
+            else if(_option == Option.PaintedModel)
+            {
+                HeaderLabel.Text = "Окрашенные модели";
+                DataGridView.DataSource = _context.PaintedModels.Select(c => new
+                {
+                    c.Colour.ColourName,
+                    c.CarModel.CarModelName,
+                    c.CarModel.CarBrand.CarBrandName,
+                    c.CarModel.Country.CountryName,
+                    c.CarModel.TechnicalInformation.BodyType.BodyTypeName,
+                    c.CarModel.TechnicalInformation.EngineType.EngineTypeName,
+                    c.CarModel.TechnicalInformation.EngineDisplacement,
+                    c.CarModel.TechnicalInformation.DoorsAmount,
+                    c.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
+                    c.CarModel.TechnicalInformation.SeatsAmount
+                }).ToList();
+            }
+            else if(_option == Option.Product)
+            {
+                HeaderLabel.Text = "Продукты";
+                DataGridView.DataSource = _context.Products.Select(p => new
+                {
+                    p.Markup,
+                    p.PaintedModel.Colour.ColourName,
+                    p.PaintedModel.CarModel.CarModelName,
+                    p.PaintedModel.CarModel.CarBrand.CarBrandName,
+                    p.PaintedModel.CarModel.Country.CountryName,
+                    p.PaintedModel.CarModel.TechnicalInformation.BodyType.BodyTypeName,
+                    p.PaintedModel.CarModel.TechnicalInformation.EngineType.EngineTypeName,
+                    p.PaintedModel.CarModel.TechnicalInformation.EngineDisplacement,
+                    p.PaintedModel.CarModel.TechnicalInformation.DoorsAmount,
+                    p.PaintedModel.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
+                    p.PaintedModel.CarModel.TechnicalInformation.SeatsAmount
+                }).ToList();
+            }
         }
 
         public void RefreshData()
@@ -124,6 +164,43 @@ namespace AutoShow
                     c.TechnicalInformation.SeatsAmount
                 }).ToList();
             }
+            else if(_option == Option.Colour)
+            {
+                DataGridView.DataSource = _context.Colours.Select(c => new { c.ColourName }).ToList();
+            }
+            else if(_option == Option.PaintedModel)
+            {
+                DataGridView.DataSource = _context.PaintedModels.Select(c => new
+                {
+                    c.Colour.ColourName,
+                    c.CarModel.CarModelName,
+                    c.CarModel.CarBrand.CarBrandName,
+                    c.CarModel.Country.CountryName,
+                    c.CarModel.TechnicalInformation.BodyType.BodyTypeName,
+                    c.CarModel.TechnicalInformation.EngineType.EngineTypeName,
+                    c.CarModel.TechnicalInformation.EngineDisplacement,
+                    c.CarModel.TechnicalInformation.DoorsAmount,
+                    c.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
+                    c.CarModel.TechnicalInformation.SeatsAmount
+                }).ToList();
+            }
+            else if(_option == Option.Product)
+            {
+                DataGridView.DataSource = _context.Products.Select(p => new
+                {
+                    p.Markup,
+                    p.PaintedModel.Colour.ColourName,
+                    p.PaintedModel.CarModel.CarModelName,
+                    p.PaintedModel.CarModel.CarBrand.CarBrandName,
+                    p.PaintedModel.CarModel.Country.CountryName,
+                    p.PaintedModel.CarModel.TechnicalInformation.BodyType.BodyTypeName,
+                    p.PaintedModel.CarModel.TechnicalInformation.EngineType.EngineTypeName,
+                    p.PaintedModel.CarModel.TechnicalInformation.EngineDisplacement,
+                    p.PaintedModel.CarModel.TechnicalInformation.DoorsAmount,
+                    p.PaintedModel.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
+                    p.PaintedModel.CarModel.TechnicalInformation.SeatsAmount
+                }).ToList();
+            }
         }
 
         private void CloseLabel_Click(object sender, EventArgs e)
@@ -141,7 +218,7 @@ namespace AutoShow
         private void CreateButton_Click(object sender, EventArgs e)
         {
             if (_option == Option.BodyType || _option == Option.EngineType || _option == Option.EngineLocation || _option == Option.CarBrand ||
-                _option == Option.Country)
+                _option == Option.Country || _option == Option.Colour)
             {
                 var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option);
                 createUpdateAdminForm.Show();
@@ -154,6 +231,16 @@ namespace AutoShow
             else if(_option == Option.CarModel)
             {
                 var createUpdateAdminForm = new CU_CarModelForm(_context, this);
+                createUpdateAdminForm.Show();
+            }
+            else if(_option == Option.PaintedModel)
+            {
+                var createUpdateAdminForm = new CU_PaintedModelForm(_context, this);
+                createUpdateAdminForm.Show();
+            }
+            else if(_option == Option.Product)
+            {
+                var createUpdateAdminForm = new CU_ProductForm(_context, this);
                 createUpdateAdminForm.Show();
             }
             this.Hide();
@@ -237,12 +324,12 @@ namespace AutoShow
                 string engineLocationName = DataGridView[7, DataGridView.SelectedRows[0].Index].Value.ToString();          
                 int seatsAmount = int.Parse(DataGridView[8, DataGridView.SelectedRows[0].Index].Value.ToString());
 
-                int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName).CarBrandId;
-                int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
-
                 int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
                 int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
                 int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+
+                int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName).CarBrandId;
+                int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
 
                 int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
                 t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
@@ -251,6 +338,84 @@ namespace AutoShow
                 var carModel = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.TechnicalInformationId == technicalInformationId &&
                 c.CountryId == countryId && c.CarBrandId == carBrandId);
                 var createUpdateAdminForm = new CU_CarModelForm(_context, this, carModel);
+                createUpdateAdminForm.Show();
+            }
+            else if(_option == Option.Colour)
+            {
+                string colourName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+                var colour = _context.Colours.FirstOrDefault(c => c.ColourName == colourName);
+                var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option, colour);
+                createUpdateAdminForm.Show();
+            }
+            else if(_option == Option.PaintedModel)
+            {
+                string colourName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string carModelName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string carBrandName = DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string countryName = DataGridView[3, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string bodyTypeName = DataGridView[4, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string engineTypeName = DataGridView[5, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int engineDisplacement = int.Parse(DataGridView[6, DataGridView.SelectedRows[0].Index].Value.ToString());
+                int doorsAmount = int.Parse(DataGridView[7, DataGridView.SelectedRows[0].Index].Value.ToString());
+                string engineLocationName = DataGridView[8, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int seatsAmount = int.Parse(DataGridView[9, DataGridView.SelectedRows[0].Index].Value.ToString());
+
+                int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
+                int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
+                int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+                
+                int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName).CarBrandId;
+                int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
+
+                int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
+                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
+
+                int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == colourName).ColourId;
+
+                int carModelId = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.CarBrandId == c.CarBrandId &&
+                c.CountryId == countryId && c.TechnicalInformationId == technicalInformationId).CarModelId;
+
+                var paintedModel = _context.PaintedModels.FirstOrDefault(p => p.CarModelId == carModelId && p.ColourId == colourId);
+                
+                var createUpdateAdminForm = new CU_PaintedModelForm(_context, this, paintedModel);
+                createUpdateAdminForm.Show();
+            }
+            else if(_option == Option.Product)
+            {
+                decimal markup = decimal.Parse(DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString());
+                string colourName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string carModelName = DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string carBrandName = DataGridView[3, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string countryName = DataGridView[4, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string bodyTypeName = DataGridView[5, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string engineTypeName = DataGridView[6, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int engineDisplacement = int.Parse(DataGridView[7, DataGridView.SelectedRows[0].Index].Value.ToString());
+                int doorsAmount = int.Parse(DataGridView[8, DataGridView.SelectedRows[0].Index].Value.ToString());
+                string engineLocationName = DataGridView[9, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int seatsAmount = int.Parse(DataGridView[10, DataGridView.SelectedRows[0].Index].Value.ToString());
+
+                int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
+                int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
+                int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+
+                int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName).CarBrandId;
+                int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
+
+                int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
+                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
+
+                int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == colourName).ColourId;
+
+                int carModelId = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.CarBrandId == c.CarBrandId &&
+                c.CountryId == countryId && c.TechnicalInformationId == technicalInformationId).CarModelId;
+
+                int paintedModelId = _context.PaintedModels.FirstOrDefault(p => p.CarModelId == carModelId && p.ColourId == colourId).PaintedModelId;
+
+                var product = _context.Products.FirstOrDefault(p => p.PaintedModelId == paintedModelId);
+
+                var createUpdateAdminForm = new CU_ProductForm(_context, this, product);
                 createUpdateAdminForm.Show();
             }
             this.Hide();
@@ -363,12 +528,12 @@ namespace AutoShow
                 string engineLocationName = DataGridView[7, DataGridView.SelectedRows[0].Index].Value.ToString();
                 int seatsAmount = int.Parse(DataGridView[8, DataGridView.SelectedRows[0].Index].Value.ToString());
 
-                int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName).CarBrandId;
-                int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
-
                 int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
                 int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
                 int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+                
+                int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName).CarBrandId;
+                int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
 
                 int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
                 t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
@@ -384,6 +549,114 @@ namespace AutoShow
                     return;
                 }
                 _context.CarModels.Remove(carModel);
+            }
+            else if(_option == Option.Colour)
+            {
+                string colourName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+                var colour = _context.Colours.FirstOrDefault(c => c.ColourName == colourName);
+                var paintedModel = _context.PaintedModels.FirstOrDefault(p => p.ColourId == colour.ColourId);
+                if (paintedModel != null)
+                {
+                    MessageBox.Show("Данный цвет присутсвует в окрашенных моделях, поэтому для начала удалите все связанные данные");
+                    return;
+                }
+                _context.Colours.Remove(colour);
+            }
+            else if(_option == Option.PaintedModel)
+            {
+                string colourName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string carModelName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string carBrandName = DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string countryName = DataGridView[3, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string bodyTypeName = DataGridView[4, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string engineTypeName = DataGridView[5, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int engineDisplacement = int.Parse(DataGridView[6, DataGridView.SelectedRows[0].Index].Value.ToString());
+                int doorsAmount = int.Parse(DataGridView[7, DataGridView.SelectedRows[0].Index].Value.ToString());
+                string engineLocationName = DataGridView[8, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int seatsAmount = int.Parse(DataGridView[9, DataGridView.SelectedRows[0].Index].Value.ToString());
+
+                int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
+                int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
+                int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+
+                int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName).CarBrandId;
+                int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
+
+                int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
+                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
+
+                int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == colourName).ColourId;
+
+                int carModelId = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.CarBrandId == c.CarBrandId &&
+                c.CountryId == countryId && c.TechnicalInformationId == technicalInformationId).CarModelId;
+
+                var paintedModel = _context.PaintedModels.FirstOrDefault(p => p.CarModelId == carModelId && p.ColourId == colourId);
+
+                var product = _context.Products.FirstOrDefault(p => p.PaintedModelId == paintedModel.PaintedModelId);
+                if (product != null)
+                {
+                    MessageBox.Show("Данная окрашенная модель присутсвуте в продуктах,поэтому для начала удалите все связанные данные");
+                    return;
+                }
+                _context.PaintedModels.Remove(paintedModel);
+            }
+            else if(_option == Option.Product)
+            {
+                decimal markup = decimal.Parse(DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString());
+                string colourName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string carModelName = DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string carBrandName = DataGridView[3, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string countryName = DataGridView[4, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string bodyTypeName = DataGridView[5, DataGridView.SelectedRows[0].Index].Value.ToString();
+                string engineTypeName = DataGridView[6, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int engineDisplacement = int.Parse(DataGridView[7, DataGridView.SelectedRows[0].Index].Value.ToString());
+                int doorsAmount = int.Parse(DataGridView[8, DataGridView.SelectedRows[0].Index].Value.ToString());
+                string engineLocationName = DataGridView[9, DataGridView.SelectedRows[0].Index].Value.ToString();
+                int seatsAmount = int.Parse(DataGridView[10, DataGridView.SelectedRows[0].Index].Value.ToString());
+
+                int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
+                int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
+                int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+
+                int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName).CarBrandId;
+                int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
+
+                int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
+                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
+
+                int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == colourName).ColourId;
+
+                int carModelId = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.CarBrandId == c.CarBrandId &&
+                c.CountryId == countryId && c.TechnicalInformationId == technicalInformationId).CarModelId;
+
+                var paintedModelId = _context.PaintedModels.FirstOrDefault(p => p.CarModelId == carModelId && p.ColourId == colourId).PaintedModelId;
+
+                var product = _context.Products.FirstOrDefault(p => p.PaintedModelId == paintedModelId);
+
+                var warehouse = _context.Warehouses.FirstOrDefault(w => w.ProductId == product.ProductId);
+                if (warehouse != null)
+                {
+                    MessageBox.Show("Данный продукт есть на складе,поэтому для начала удалите все связанные данные");
+                    return;
+                }
+
+                var purchase = _context.Purchases.FirstOrDefault(p => p.ProductId == product.ProductId);
+                if (purchase != null)
+                {
+                    MessageBox.Show("Данный продукт есть в сделках,поэтому для начала удалите все связанные данные");
+                    return;
+                }
+
+                var supply = _context.Supplies.FirstOrDefault(s => s.ProductId == product.ProductId);
+                if (supply != null)
+                {
+                    MessageBox.Show("Данный продукт есть в поставках,поэтому для начала удалите все связанные данные");
+                    return;
+                }
+
+                _context.Products.Remove(product);
             }
             if (_context.SaveChanges() > 0)
             {

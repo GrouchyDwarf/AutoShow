@@ -21,6 +21,7 @@ namespace AutoShow
         private readonly EngineType _engineType;
         private readonly CarBrand _carBrand;
         private readonly Country _country;
+        private readonly Colour _colour;
         private readonly Option _option;
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option)
         {
@@ -59,6 +60,12 @@ namespace AutoShow
             _country = country;
             TextBox.Text = _country.CountryName;
         }
+        public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in Colour colour)
+        : this(context, adminCrudForm, option)
+        {
+            _colour = colour;
+            TextBox.Text = _colour.ColourName;
+        }
         private void CloseLabel_Click(object sender, EventArgs e)
         {
             _context.Dispose();
@@ -72,7 +79,7 @@ namespace AutoShow
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            if (_bodyType != null || _engineLocation != null || _engineType != null || _carBrand != null || _country != null)
+            if (_bodyType != null || _engineLocation != null || _engineType != null || _carBrand != null || _country != null || _colour != null)
             {
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
@@ -103,7 +110,7 @@ namespace AutoShow
                 var engineLocation = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName);
                 if (engineLocation != null)
                 {
-                    MessageBox.Show("Такое расположение уже существует");
+                    MessageBox.Show("Такое расположение двигателя уже существует");
                     return;
                 }
                 var newEngineLocation = new EngineLocation
@@ -157,6 +164,21 @@ namespace AutoShow
                 };
                 _context.Countries.Add(newCountry);
             }
+            else if(_option == Option.Colour)
+            {
+                string colourName = TextBox.Text;
+                var colour = _context.Colours.FirstOrDefault(c => c.ColourName == colourName);
+                if (colour != null)
+                {
+                    MessageBox.Show("Такой цвет уже существует");
+                    return;
+                }
+                var newColour = new Colour
+                {
+                    ColourName = colourName
+                };
+                _context.Colours.Add(newColour);
+            }
             if (_context.SaveChanges() > 0)
             {
                 MessageBox.Show("Данные успешно добавлены");
@@ -166,65 +188,76 @@ namespace AutoShow
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            if (_bodyType == null && _engineLocation == null && _engineType == null && _carBrand == null && _country == null)
+            if (_bodyType == null && _engineLocation == null && _engineType == null && _carBrand == null && _country == null && _colour == null)
             {
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
             }
             if (_option == Option.BodyType)
             {
-                var bodyType = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == _bodyType.BodyTypeName);
-                var existingTuple = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == TextBox.Text);
-                if(existingTuple != null)
+                string bodyTypeName = TextBox.Text;
+                var existingBodyType = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName);
+                if (existingBodyType != null)
                 {
                     MessageBox.Show("Такой тип кузова уже существует");
                     return;
                 }
-                bodyType.BodyTypeName = TextBox.Text;
+                _bodyType.BodyTypeName = TextBox.Text;
             }
             else if(_option == Option.EngineLocation)
             {
-                var engineLocation = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == _engineLocation.EngineLocationName);
-                var existingTuple = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == TextBox.Text);
-                if (existingTuple != null)
+                string engineLocationName = TextBox.Text;
+                var existingEngineLocation = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName);
+                if (existingEngineLocation != null)
                 {
-                    MessageBox.Show("Такой тип кузова уже существует");
+                    MessageBox.Show("Такое расположение двигателя уже существует");
                     return;
                 }
-                engineLocation.EngineLocationName = TextBox.Text;
+                _engineLocation.EngineLocationName = TextBox.Text;
             }
             else if(_option == Option.EngineType)
             {
-                var engineType = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == _engineType.EngineTypeName);
-                var existingTuple = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == TextBox.Text);
-                if (existingTuple != null)
+                string engineTypeName = TextBox.Text;
+                var existingEngineType = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName);
+                if (existingEngineType != null)
                 {
-                    MessageBox.Show("Такой тип кузова уже существует");
+                    MessageBox.Show("Такой тип двигателя уже существует");
                     return;
                 }
-                engineType.EngineTypeName = TextBox.Text;
+                _engineType.EngineTypeName = TextBox.Text;
             }
             else if (_option == Option.CarBrand)
             {
-                var carBrand = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == _carBrand.CarBrandName);
-                var existingTuple = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == TextBox.Text);
-                if (existingTuple != null)
+                string carBrandName = TextBox.Text;
+                var existingCarBrand = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == carBrandName);
+                if (existingCarBrand != null)
                 {
-                    MessageBox.Show("Такой тип кузова уже существует");
+                    MessageBox.Show("Такая марка уже существует");
                     return;
                 }
-                carBrand.CarBrandName = TextBox.Text;
+                _carBrand.CarBrandName = TextBox.Text;
             }
             else if (_option == Option.Country)
             {
-                var country = _context.Countries.FirstOrDefault(c => c.CountryName == _country.CountryName);
-                var existingTuple = _context.Countries.FirstOrDefault(c => c.CountryName == TextBox.Text);
-                if (existingTuple != null)
+                string countryName = TextBox.Text;
+                var existingCountry = _context.Countries.FirstOrDefault(c => c.CountryName == countryName);
+                if (existingCountry != null)
                 {
-                    MessageBox.Show("Такой тип кузова уже существует");
+                    MessageBox.Show("Такая страна уже существует");
                     return;
                 }
-                country.CountryName = TextBox.Text;
+                _country.CountryName = TextBox.Text;
+            }
+            else if(_option == Option.Colour)
+            {
+                string colourName = TextBox.Text;
+                var existingColour = _context.Colours.FirstOrDefault(c => c.ColourName == colourName);
+                if (existingColour != null)
+                {
+                    MessageBox.Show("Такой цвет уже существует");
+                    return;
+                }
+                _colour.ColourName = TextBox.Text;
             }
             if (_context.SaveChanges() > 0)
             {

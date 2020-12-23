@@ -21,7 +21,7 @@ namespace AutoShow.Models
 
         public int PaintedModelId { get; set; }
 
-        public decimal Price { get; set; }
+        public decimal Markup { get; set; }
 
         public virtual PaintedModel PaintedModel { get; set; }
 

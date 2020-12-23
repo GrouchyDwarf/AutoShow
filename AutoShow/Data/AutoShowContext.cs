@@ -170,7 +170,7 @@ namespace AutoShow.Data
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.Price)
+                .Property(e => e.Markup)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Product>()

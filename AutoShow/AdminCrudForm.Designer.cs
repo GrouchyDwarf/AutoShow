@@ -54,7 +54,7 @@
             this.BodyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BodyPanel.Location = new System.Drawing.Point(0, 0);
             this.BodyPanel.Name = "BodyPanel";
-            this.BodyPanel.Size = new System.Drawing.Size(501, 503);
+            this.BodyPanel.Size = new System.Drawing.Size(654, 503);
             this.BodyPanel.TabIndex = 4;
             // 
             // UpdateButton
@@ -66,7 +66,7 @@
             this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UpdateButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(313, 391);
+            this.UpdateButton.Location = new System.Drawing.Point(452, 391);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(156, 41);
             this.UpdateButton.TabIndex = 16;
@@ -83,7 +83,7 @@
             this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateButton.ForeColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(313, 450);
+            this.CreateButton.Location = new System.Drawing.Point(452, 450);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(156, 41);
             this.CreateButton.TabIndex = 15;
@@ -118,7 +118,7 @@
             this.DataGridView.ReadOnly = true;
             this.DataGridView.RowHeadersWidth = 51;
             this.DataGridView.RowTemplate.Height = 24;
-            this.DataGridView.Size = new System.Drawing.Size(429, 267);
+            this.DataGridView.Size = new System.Drawing.Size(568, 267);
             this.DataGridView.TabIndex = 13;
             // 
             // BackButton
@@ -146,7 +146,7 @@
             this.HeaderPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.HeaderPanel.Location = new System.Drawing.Point(0, 0);
             this.HeaderPanel.Name = "HeaderPanel";
-            this.HeaderPanel.Size = new System.Drawing.Size(501, 100);
+            this.HeaderPanel.Size = new System.Drawing.Size(654, 100);
             this.HeaderPanel.TabIndex = 1;
             // 
             // CloseLabel
@@ -156,7 +156,7 @@
             this.CloseLabel.Dock = System.Windows.Forms.DockStyle.Right;
             this.CloseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CloseLabel.ForeColor = System.Drawing.Color.White;
-            this.CloseLabel.Location = new System.Drawing.Point(474, 0);
+            this.CloseLabel.Location = new System.Drawing.Point(627, 0);
             this.CloseLabel.Name = "CloseLabel";
             this.CloseLabel.Size = new System.Drawing.Size(27, 25);
             this.CloseLabel.TabIndex = 1;
@@ -168,7 +168,7 @@
             this.HeaderLabel.AutoSize = true;
             this.HeaderLabel.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.HeaderLabel.ForeColor = System.Drawing.Color.White;
-            this.HeaderLabel.Location = new System.Drawing.Point(155, 40);
+            this.HeaderLabel.Location = new System.Drawing.Point(260, 38);
             this.HeaderLabel.Name = "HeaderLabel";
             this.HeaderLabel.Size = new System.Drawing.Size(264, 32);
             this.HeaderLabel.TabIndex = 17;
@@ -178,7 +178,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 503);
+            this.ClientSize = new System.Drawing.Size(654, 503);
             this.Controls.Add(this.BodyPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminCrudForm";

@@ -99,26 +99,36 @@ namespace AutoShow
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
             }
-            var technicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId ==_technicalInformation.BodyTypeId &&
-            t.DoorsAmount == _technicalInformation.DoorsAmount && t.EngineDisplacement == _technicalInformation.EngineDisplacement &&
-            t.EngineLocationId == _technicalInformation.EngineLocationId && t.EngineTypeId == _technicalInformation.EngineTypeId &&
-            t.SeatsAmount == _technicalInformation.SeatsAmount);
 
-            var existingTuple = _context.TechnicalInformations.FirstOrDefault(t => t.BodyType.BodyTypeName == BodyTypeComboBox.Text &&
-            t.DoorsAmount == (int)DoorsAmountNumericUpDown.Value && t.EngineDisplacement == (int)EngineDisplacementNumericUpDown.Value &&
-            t.EngineLocation.EngineLocationName == EngineLocationComboBox.Text && t.EngineType.EngineTypeName == EngineTypeComboBox.Text &&
-            t.SeatsAmount == (int)SeatsAmountNumericUpDown.Value);
-            if (existingTuple != null)
+            if (BodyTypeComboBox.SelectedItem == null || EngineLocationComboBox.SelectedItem == null || EngineTypeComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
+
+            int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == BodyTypeComboBox.Text).BodyTypeId;
+            int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == EngineTypeComboBox.Text).EngineTypeId;
+            int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == EngineLocationComboBox.Text).EngineLocationId;
+            int doorsAmount = (int)DoorsAmountNumericUpDown.Value;
+            int seatsAmount = (int)SeatsAmountNumericUpDown.Value;
+            int engineDisplacement = (int)EngineDisplacementNumericUpDown.Value;
+
+            var existingTechnicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.DoorsAmount == doorsAmount &&
+            t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId && t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount);
+
+            if (existingTechnicalInformation != null)
             {
                 MessageBox.Show("Такие тех данные уже существуют");
                 return;
             }
-            technicalInformation.BodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == BodyTypeComboBox.Text).BodyTypeId;
-            technicalInformation.EngineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == EngineTypeComboBox.Text).EngineTypeId;
-            technicalInformation.EngineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == EngineLocationComboBox.Text).EngineLocationId;
-            technicalInformation.DoorsAmount = (int)DoorsAmountNumericUpDown.Value;
-            technicalInformation.SeatsAmount = (int)SeatsAmountNumericUpDown.Value;
-            technicalInformation.EngineDisplacement = (int)EngineDisplacementNumericUpDown.Value;
+
+            _technicalInformation.BodyTypeId = bodyTypeId;
+            _technicalInformation.DoorsAmount = doorsAmount;
+            _technicalInformation.EngineDisplacement = engineDisplacement;
+            _technicalInformation.EngineLocationId = engineLocationId;
+            _technicalInformation.EngineTypeId = engineTypeId;
+            _technicalInformation.SeatsAmount = seatsAmount;
+
             if (_context.SaveChanges() > 0)
             {
                 MessageBox.Show("Данные успешно обновлены");
