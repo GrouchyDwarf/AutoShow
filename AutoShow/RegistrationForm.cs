@@ -112,7 +112,7 @@ namespace AutoShow
                 };
                 _context.Admins.Add(newAdmin);
             } 
-            else if(_role == Role.DeliveryMan)
+            else if(_role == Role.Provider)
             {
                 var providers = _context.Providers.ToList();
                 foreach (Provider provider in providers)

@@ -1,6 +1,6 @@
 ﻿namespace AutoShow
 {
-    partial class CU_ProductForm
+    partial class CU_SupplyForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,12 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
-            this.MarkupNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.MarkupLabel = new System.Windows.Forms.Label();
+            this.PriceLabel = new System.Windows.Forms.Label();
+            this.PriceNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.QuantityLabel = new System.Windows.Forms.Label();
+            this.QuantityNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.SupplyDateLabel = new System.Windows.Forms.Label();
+            this.DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.ColourLabel = new System.Windows.Forms.Label();
             this.ColourComboBox = new System.Windows.Forms.ComboBox();
             this.EngineDisplacementLabel = new System.Windows.Forms.Label();
@@ -57,7 +61,8 @@
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.CloseLabel = new System.Windows.Forms.Label();
             this.BodyPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MarkupNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EngineDisplacementNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SeatsAmountNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DoorsAmountNumericUpDown)).BeginInit();
@@ -67,8 +72,12 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
-            this.BodyPanel.Controls.Add(this.MarkupNumericUpDown);
-            this.BodyPanel.Controls.Add(this.MarkupLabel);
+            this.BodyPanel.Controls.Add(this.PriceLabel);
+            this.BodyPanel.Controls.Add(this.PriceNumericUpDown);
+            this.BodyPanel.Controls.Add(this.QuantityLabel);
+            this.BodyPanel.Controls.Add(this.QuantityNumericUpDown);
+            this.BodyPanel.Controls.Add(this.SupplyDateLabel);
+            this.BodyPanel.Controls.Add(this.DateTimePicker);
             this.BodyPanel.Controls.Add(this.ColourLabel);
             this.BodyPanel.Controls.Add(this.ColourComboBox);
             this.BodyPanel.Controls.Add(this.EngineDisplacementLabel);
@@ -96,33 +105,75 @@
             this.BodyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BodyPanel.Location = new System.Drawing.Point(0, 0);
             this.BodyPanel.Name = "BodyPanel";
-            this.BodyPanel.Size = new System.Drawing.Size(625, 532);
-            this.BodyPanel.TabIndex = 9;
+            this.BodyPanel.Size = new System.Drawing.Size(625, 576);
+            this.BodyPanel.TabIndex = 10;
             // 
-            // MarkupNumericUpDown
+            // PriceLabel
             // 
-            this.MarkupNumericUpDown.DecimalPlaces = 4;
-            this.MarkupNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MarkupNumericUpDown.Location = new System.Drawing.Point(511, 390);
-            this.MarkupNumericUpDown.Maximum = new decimal(new int[] {
+            this.PriceLabel.AutoSize = true;
+            this.PriceLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PriceLabel.ForeColor = System.Drawing.Color.White;
+            this.PriceLabel.Location = new System.Drawing.Point(510, 436);
+            this.PriceLabel.Name = "PriceLabel";
+            this.PriceLabel.Size = new System.Drawing.Size(57, 23);
+            this.PriceLabel.TabIndex = 44;
+            this.PriceLabel.Text = "Цена";
+            // 
+            // PriceNumericUpDown
+            // 
+            this.PriceNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PriceNumericUpDown.Location = new System.Drawing.Point(511, 477);
+            this.PriceNumericUpDown.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.PriceNumericUpDown.Name = "PriceNumericUpDown";
+            this.PriceNumericUpDown.Size = new System.Drawing.Size(80, 30);
+            this.PriceNumericUpDown.TabIndex = 43;
+            // 
+            // QuantityLabel
+            // 
+            this.QuantityLabel.AutoSize = true;
+            this.QuantityLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.QuantityLabel.ForeColor = System.Drawing.Color.White;
+            this.QuantityLabel.Location = new System.Drawing.Point(483, 353);
+            this.QuantityLabel.Name = "QuantityLabel";
+            this.QuantityLabel.Size = new System.Drawing.Size(117, 23);
+            this.QuantityLabel.TabIndex = 42;
+            this.QuantityLabel.Text = "Количество";
+            // 
+            // QuantityNumericUpDown
+            // 
+            this.QuantityNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.QuantityNumericUpDown.Location = new System.Drawing.Point(511, 391);
+            this.QuantityNumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
-            this.MarkupNumericUpDown.Name = "MarkupNumericUpDown";
-            this.MarkupNumericUpDown.Size = new System.Drawing.Size(80, 30);
-            this.MarkupNumericUpDown.TabIndex = 40;
+            this.QuantityNumericUpDown.Name = "QuantityNumericUpDown";
+            this.QuantityNumericUpDown.Size = new System.Drawing.Size(80, 30);
+            this.QuantityNumericUpDown.TabIndex = 41;
             // 
-            // MarkupLabel
+            // SupplyDateLabel
             // 
-            this.MarkupLabel.AutoSize = true;
-            this.MarkupLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MarkupLabel.ForeColor = System.Drawing.Color.White;
-            this.MarkupLabel.Location = new System.Drawing.Point(500, 353);
-            this.MarkupLabel.Name = "MarkupLabel";
-            this.MarkupLabel.Size = new System.Drawing.Size(91, 23);
-            this.MarkupLabel.TabIndex = 39;
-            this.MarkupLabel.Text = "Наценка";
+            this.SupplyDateLabel.AutoSize = true;
+            this.SupplyDateLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SupplyDateLabel.ForeColor = System.Drawing.Color.White;
+            this.SupplyDateLabel.Location = new System.Drawing.Point(36, 353);
+            this.SupplyDateLabel.Name = "SupplyDateLabel";
+            this.SupplyDateLabel.Size = new System.Drawing.Size(142, 23);
+            this.SupplyDateLabel.TabIndex = 40;
+            this.SupplyDateLabel.Text = "Дата поставки";
+            // 
+            // DateTimePicker
+            // 
+            this.DateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DateTimePicker.Location = new System.Drawing.Point(40, 391);
+            this.DateTimePicker.Name = "DateTimePicker";
+            this.DateTimePicker.Size = new System.Drawing.Size(199, 30);
+            this.DateTimePicker.TabIndex = 39;
             // 
             // ColourLabel
             // 
@@ -139,7 +190,7 @@
             // 
             this.ColourComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ColourComboBox.FormattingEnabled = true;
-            this.ColourComboBox.Location = new System.Drawing.Point(300, 389);
+            this.ColourComboBox.Location = new System.Drawing.Point(298, 390);
             this.ColourComboBox.Name = "ColourComboBox";
             this.ColourComboBox.Size = new System.Drawing.Size(167, 31);
             this.ColourComboBox.TabIndex = 37;
@@ -345,7 +396,7 @@
             this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateButton.ForeColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(449, 457);
+            this.CreateButton.Location = new System.Drawing.Point(300, 457);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(151, 41);
             this.CreateButton.TabIndex = 15;
@@ -362,7 +413,7 @@
             this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.UpdateButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(40, 389);
+            this.UpdateButton.Location = new System.Drawing.Point(40, 457);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(161, 41);
             this.UpdateButton.TabIndex = 14;
@@ -379,7 +430,7 @@
             this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BackButton.ForeColor = System.Drawing.Color.White;
-            this.BackButton.Location = new System.Drawing.Point(40, 457);
+            this.BackButton.Location = new System.Drawing.Point(40, 512);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(161, 41);
             this.BackButton.TabIndex = 11;
@@ -411,19 +462,20 @@
             this.CloseLabel.Text = "X";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
             // 
-            // CU_ProductForm
+            // CU_SupplyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(625, 532);
+            this.ClientSize = new System.Drawing.Size(625, 576);
             this.Controls.Add(this.BodyPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CU_ProductForm";
+            this.Name = "CU_SupplyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CU_ProductForm";
+            this.Text = "CU_SupplyForm";
             this.BodyPanel.ResumeLayout(false);
             this.BodyPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MarkupNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.QuantityNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EngineDisplacementNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SeatsAmountNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DoorsAmountNumericUpDown)).EndInit();
@@ -436,8 +488,6 @@
         #endregion
 
         private System.Windows.Forms.Panel BodyPanel;
-        private System.Windows.Forms.NumericUpDown MarkupNumericUpDown;
-        private System.Windows.Forms.Label MarkupLabel;
         private System.Windows.Forms.Label ColourLabel;
         private System.Windows.Forms.ComboBox ColourComboBox;
         private System.Windows.Forms.Label EngineDisplacementLabel;
@@ -463,5 +513,11 @@
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Label CloseLabel;
+        private System.Windows.Forms.Label QuantityLabel;
+        private System.Windows.Forms.NumericUpDown QuantityNumericUpDown;
+        private System.Windows.Forms.Label SupplyDateLabel;
+        private System.Windows.Forms.DateTimePicker DateTimePicker;
+        private System.Windows.Forms.Label PriceLabel;
+        private System.Windows.Forms.NumericUpDown PriceNumericUpDown;
     }
 }

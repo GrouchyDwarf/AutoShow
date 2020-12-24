@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.ProductLabel = new System.Windows.Forms.Label();
             this.PaintedModelLabel = new System.Windows.Forms.Label();
             this.ColourLabel = new System.Windows.Forms.Label();
             this.CountryLabel = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.AdminInfoLabel = new System.Windows.Forms.Label();
             this.CloseLabel = new System.Windows.Forms.Label();
-            this.ProductLabel = new System.Windows.Forms.Label();
             this.BodyPanel.SuspendLayout();
             this.HeaderPanel.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,19 @@
             this.BodyPanel.Name = "BodyPanel";
             this.BodyPanel.Size = new System.Drawing.Size(669, 503);
             this.BodyPanel.TabIndex = 2;
+            // 
+            // ProductLabel
+            // 
+            this.ProductLabel.AutoSize = true;
+            this.ProductLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ProductLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ProductLabel.ForeColor = System.Drawing.Color.White;
+            this.ProductLabel.Location = new System.Drawing.Point(12, 351);
+            this.ProductLabel.Name = "ProductLabel";
+            this.ProductLabel.Size = new System.Drawing.Size(101, 23);
+            this.ProductLabel.TabIndex = 27;
+            this.ProductLabel.Text = "Продукты";
+            this.ProductLabel.Click += new System.EventHandler(this.ProductLabel_Click);
             // 
             // PaintedModelLabel
             // 
@@ -269,19 +282,6 @@
             this.CloseLabel.TabIndex = 1;
             this.CloseLabel.Text = "X";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
-            // 
-            // ProductLabel
-            // 
-            this.ProductLabel.AutoSize = true;
-            this.ProductLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ProductLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ProductLabel.ForeColor = System.Drawing.Color.White;
-            this.ProductLabel.Location = new System.Drawing.Point(12, 351);
-            this.ProductLabel.Name = "ProductLabel";
-            this.ProductLabel.Size = new System.Drawing.Size(101, 23);
-            this.ProductLabel.TabIndex = 27;
-            this.ProductLabel.Text = "Продукты";
-            this.ProductLabel.Click += new System.EventHandler(this.ProductLabel_Click);
             // 
             // AdminMainForm
             // 

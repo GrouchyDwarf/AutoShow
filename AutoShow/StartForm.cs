@@ -15,7 +15,7 @@ namespace AutoShow
             Undefined,
             Admin,
             Manager,
-            DeliveryMan,
+            Provider,
             Client
         };
     public partial class StartForm : Form
@@ -71,7 +71,7 @@ namespace AutoShow
         private void DeliveryManLabel_Click(object sender, EventArgs e)
         {
             ChangeLabelColor(_labels, DeliveryManLabel);
-            _role = Role.DeliveryMan;
+            _role = Role.Provider;
         }
 
         private void ClientLabel_Click(object sender, EventArgs e)

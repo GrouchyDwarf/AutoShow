@@ -45,10 +45,10 @@ namespace AutoShow
             string password = PasswordTextBox.Text;
             if(_role == Role.Client)
             {
-                var clients = _context.Clients.Where(_client => _client.FirstName.Equals(firstName) &&
+                var client = _context.Clients.FirstOrDefault(_client => _client.FirstName.Equals(firstName) &&
                                                                _client.LastName.Equals(lastName)    &&
                                                                _client.Password.Equals(password));
-                if(clients.Count() == 1)
+                if(client != null)
                 {
                     MessageBox.Show("Успешная авторизация");
                 }
@@ -59,26 +59,30 @@ namespace AutoShow
             } 
             else if(_role == Role.Manager)
             {
-                var managers = _context.Managers.Where(_manager => _manager.FirstName.Equals(firstName) &&
+                var manager = _context.Managers.FirstOrDefault(_manager => _manager.FirstName.Equals(firstName) &&
                                                                    _manager.LastName.Equals(lastName) &&
                                                                    _manager.Password.Equals(password));
-                if (managers.Count() > 0)
+                if (manager != null)
                 {
-                    MessageBox.Show("Успешная авторизация");
+                    var managerCrudForm = new ManagerCrudForm(firstName, lastName, _startForm, _context);
+                    managerCrudForm.Show();
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Вы ввели неверный логин или пароль");
                 }
             }
-            else if(_role == Role.DeliveryMan) 
+            else if(_role == Role.Provider) 
             {
-                var providers = _context.Providers.Where(_provider => _provider.FirstName.Equals(firstName) &&
+                var provider = _context.Providers.FirstOrDefault(_provider => _provider.FirstName.Equals(firstName) &&
                                                                       _provider.LastName.Equals(lastName) &&
                                                                       _provider.Password.Equals(password));
-                if (providers.Count() > 0)
+                if (provider != null)
                 {
-                    MessageBox.Show("Успешная авторизация");
+                    var providerCrudForm = new ProviderCrudForm(firstName, lastName, _startForm, _context);
+                    providerCrudForm.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -87,10 +91,10 @@ namespace AutoShow
             }
             else if(_role == Role.Admin)
             {
-                var admins = _context.Admins.Where(_admin => _admin.FirstName.Equals(firstName) &&
+                var admin = _context.Admins.FirstOrDefault(_admin => _admin.FirstName.Equals(firstName) &&
                                                                _admin.LastName.Equals(lastName) &&
                                                                _admin.Password.Equals(password));
-                if (admins.Count() == 1)
+                if (admin != null)
                 {
                     var adminMainForm = new AdminMainForm(firstName, lastName, _startForm, _context);
                     adminMainForm.Show();

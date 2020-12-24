@@ -10,7 +10,7 @@ namespace AutoShow.Models
     public partial class Warehouse
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductId { get; set; }
 
         public int Quantity { get; set; }
