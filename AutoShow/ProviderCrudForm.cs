@@ -40,7 +40,7 @@ namespace AutoShow
                 s.Product.PaintedModel.CarModel.Country.CountryName,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.BodyType.BodyTypeName,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.EngineType.EngineTypeName,
-                s.Product.PaintedModel.CarModel.TechnicalInformation.EngineDisplacement,
+                s.Product.PaintedModel.CarModel.TechnicalInformation.EnginePower,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.DoorsAmount,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.SeatsAmount
@@ -63,7 +63,7 @@ namespace AutoShow
                 s.Product.PaintedModel.CarModel.Country.CountryName,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.BodyType.BodyTypeName,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.EngineType.EngineTypeName,
-                s.Product.PaintedModel.CarModel.TechnicalInformation.EngineDisplacement,
+                s.Product.PaintedModel.CarModel.TechnicalInformation.EnginePower,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.DoorsAmount,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
                 s.Product.PaintedModel.CarModel.TechnicalInformation.SeatsAmount

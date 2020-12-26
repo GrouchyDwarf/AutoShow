@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.CreatePurchaseButton = new System.Windows.Forms.Button();
             this.PurchaseButton = new System.Windows.Forms.Button();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.BackButton = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.ManagerInfoLabel = new System.Windows.Forms.Label();
             this.CloseLabel = new System.Windows.Forms.Label();
             this.WarehouseLabel = new System.Windows.Forms.Label();
+            this.ClientButton = new System.Windows.Forms.Button();
             this.BodyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.HeaderPanel.SuspendLayout();
@@ -44,6 +46,8 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
+            this.BodyPanel.Controls.Add(this.ClientButton);
+            this.BodyPanel.Controls.Add(this.CreatePurchaseButton);
             this.BodyPanel.Controls.Add(this.PurchaseButton);
             this.BodyPanel.Controls.Add(this.DataGridView);
             this.BodyPanel.Controls.Add(this.BackButton);
@@ -54,6 +58,23 @@
             this.BodyPanel.Size = new System.Drawing.Size(848, 503);
             this.BodyPanel.TabIndex = 6;
             // 
+            // CreatePurchaseButton
+            // 
+            this.CreatePurchaseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
+            this.CreatePurchaseButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CreatePurchaseButton.FlatAppearance.BorderSize = 0;
+            this.CreatePurchaseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
+            this.CreatePurchaseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreatePurchaseButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreatePurchaseButton.ForeColor = System.Drawing.Color.White;
+            this.CreatePurchaseButton.Location = new System.Drawing.Point(618, 399);
+            this.CreatePurchaseButton.Name = "CreatePurchaseButton";
+            this.CreatePurchaseButton.Size = new System.Drawing.Size(189, 82);
+            this.CreatePurchaseButton.TabIndex = 16;
+            this.CreatePurchaseButton.Text = "Заключить сделку";
+            this.CreatePurchaseButton.UseVisualStyleBackColor = false;
+            this.CreatePurchaseButton.Click += new System.EventHandler(this.CreatePurchaseButton_Click);
+            // 
             // PurchaseButton
             // 
             this.PurchaseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
@@ -63,12 +84,13 @@
             this.PurchaseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PurchaseButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PurchaseButton.ForeColor = System.Drawing.Color.White;
-            this.PurchaseButton.Location = new System.Drawing.Point(651, 420);
+            this.PurchaseButton.Location = new System.Drawing.Point(428, 420);
             this.PurchaseButton.Name = "PurchaseButton";
             this.PurchaseButton.Size = new System.Drawing.Size(156, 41);
             this.PurchaseButton.TabIndex = 15;
             this.PurchaseButton.Text = "Сделки";
             this.PurchaseButton.UseVisualStyleBackColor = false;
+            this.PurchaseButton.Click += new System.EventHandler(this.PurchaseButton_Click);
             // 
             // DataGridView
             // 
@@ -148,6 +170,23 @@
             this.WarehouseLabel.TabIndex = 17;
             this.WarehouseLabel.Text = "Склад";
             // 
+            // ClientButton
+            // 
+            this.ClientButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
+            this.ClientButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ClientButton.FlatAppearance.BorderSize = 0;
+            this.ClientButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
+            this.ClientButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClientButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClientButton.ForeColor = System.Drawing.Color.White;
+            this.ClientButton.Location = new System.Drawing.Point(243, 420);
+            this.ClientButton.Name = "ClientButton";
+            this.ClientButton.Size = new System.Drawing.Size(156, 41);
+            this.ClientButton.TabIndex = 17;
+            this.ClientButton.Text = "Клиенты";
+            this.ClientButton.UseVisualStyleBackColor = false;
+            this.ClientButton.Click += new System.EventHandler(this.ClientButton_Click);
+            // 
             // ManagerCrudForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -176,5 +215,7 @@
         private System.Windows.Forms.Label ManagerInfoLabel;
         private System.Windows.Forms.Label CloseLabel;
         private System.Windows.Forms.Label WarehouseLabel;
+        private System.Windows.Forms.Button CreatePurchaseButton;
+        private System.Windows.Forms.Button ClientButton;
     }
 }

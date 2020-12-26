@@ -24,7 +24,8 @@ namespace AutoShow
         CarModel,
         Colour,
         PaintedModel,
-        Product
+        Product,
+        PaymentType
     };
     public partial class AdminMainForm : Form
     {
@@ -54,6 +55,7 @@ namespace AutoShow
             _labels.Add(ColourLabel);
             _labels.Add(PaintedModelLabel);
             _labels.Add(ProductLabel);
+            _labels.Add(PaymentTypeLabel);
             #endregion
 
         }
@@ -126,12 +128,17 @@ namespace AutoShow
             ChangeLabelColor(_labels, ProductLabel);
             _option = Option.Product;
         }
+        private void PaymentTypeLabel_Click(object sender, EventArgs e)
+        {
+            ChangeLabelColor(_labels, PaymentTypeLabel);
+            _option = Option.PaymentType;
+        }
         private void BackButton_Click(object sender, EventArgs e)
         {
             _startForm.Show();
             this.Close();
         }
-
+        
         private void NextButton_Click(object sender, EventArgs e)
         {
             if(_option == Option.Undefined)
@@ -142,6 +149,8 @@ namespace AutoShow
             var adminCrudForm = new AdminCrudForm(_context, this, _option);
             adminCrudForm.Show();
             this.Hide();
-        }     
+        }
+
+        
     }
 }

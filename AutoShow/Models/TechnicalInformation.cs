@@ -24,7 +24,7 @@ namespace AutoShow.Models
 
         public int SeatsAmount { get; set; }
 
-        public int EngineDisplacement { get; set; }
+        public int EnginePower { get; set; }
 
         public int EngineTypeId { get; set; }
 

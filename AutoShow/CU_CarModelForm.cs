@@ -22,25 +22,41 @@ namespace AutoShow
             InitializeComponent();
             _context = context;
             _adminCrudForm = adminCrudForm;
-            BodyTypeComboBox.Items.AddRange(_context.BodyTypes.Select(b => b.BodyTypeName).ToArray());
-            EngineTypeComboBox.Items.AddRange(_context.EngineTypes.Select(en => en.EngineTypeName).ToArray());
-            EngineLocationComboBox.Items.AddRange(_context.EngineLocations.Select(en => en.EngineLocationName).ToArray());
             CarBrandComboBox.Items.AddRange(_context.CarBrands.Select(c => c.CarBrandName).ToArray());
             CountryComboBox.Items.AddRange(_context.Countries.Select(c => c.CountryName).ToArray());
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            DataGridView.DataSource = _context.TechnicalInformations.Select(t => new {
+                t.BodyType.BodyTypeName,
+                t.EngineType.EngineTypeName,
+                t.EnginePower,
+                t.DoorsAmount,
+                t.EngineLocation.EngineLocationName,
+                t.SeatsAmount
+            }).ToList();
         }
         public CU_CarModelForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in CarModel carModel)
-        :this(context,adminCrudForm)
+        : this(context, adminCrudForm)
         {
             _carModel = carModel;
-            BodyTypeComboBox.Text = carModel.TechnicalInformation.BodyType.BodyTypeName;
-            EngineTypeComboBox.Text = carModel.TechnicalInformation.EngineType.EngineTypeName;
-            EngineLocationComboBox.Text = carModel.TechnicalInformation.EngineLocation.EngineLocationName;
             CarBrandComboBox.Text = carModel.CarBrand.CarBrandName;
             CountryComboBox.Text = carModel.Country.CountryName;
             CarModelNameTextBox.Text = carModel.CarModelName;
-            DoorsAmountNumericUpDown.Value = carModel.TechnicalInformation.DoorsAmount;
-            SeatsAmountNumericUpDown.Value = carModel.TechnicalInformation.SeatsAmount;
-            EngineDisplacementNumericUpDown.Value = carModel.TechnicalInformation.EngineDisplacement;
+            for (int i = 0; i < DataGridView.Rows.Count; ++i)
+            {
+                if (_carModel.TechnicalInformation.BodyType.BodyTypeName == DataGridView[0, i].Value.ToString() &&
+                    _carModel.TechnicalInformation.EngineType.EngineTypeName == DataGridView[1, i].Value.ToString() &&
+                    _carModel.TechnicalInformation.EngineLocation.EngineLocationName == DataGridView[4, i].Value.ToString() &&
+                    _carModel.TechnicalInformation.DoorsAmount == int.Parse(DataGridView[3, i].Value.ToString()) &&
+                    _carModel.TechnicalInformation.EnginePower == int.Parse(DataGridView[2, i].Value.ToString()) &&
+                    _carModel.TechnicalInformation.SeatsAmount == int.Parse(DataGridView[5, i].Value.ToString()))
+                {
+                    MessageBox.Show($"Вы выбрали тех.данные на {i} строке");
+                }
+            }
         }
 
         private void CloseLabel_Click(object sender, EventArgs e)
@@ -62,30 +78,38 @@ namespace AutoShow
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(CarModelNameTextBox.Text)|| BodyTypeComboBox.SelectedItem == null || EngineLocationComboBox.SelectedItem == null ||
-                EngineTypeComboBox.SelectedItem == null || CarBrandComboBox.SelectedItem == null || CountryComboBox.SelectedItem == null)
+            if (DataGridView.SelectedRows.Count < 1)
+            {
+                MessageBox.Show("Выберите тех. данные");
+                return;
+            }
+            if (DataGridView.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Выбрано слишком много кортежей");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(CarModelNameTextBox.Text) || CarBrandComboBox.SelectedItem == null ||
+                CountryComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Заполните все поля");
                 return;
             }
-            
-            int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == BodyTypeComboBox.Text).BodyTypeId;
-            int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == EngineTypeComboBox.Text).EngineTypeId;
-            int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == EngineLocationComboBox.Text).EngineLocationId;
-            int doorsAmount = (int)DoorsAmountNumericUpDown.Value;
-            int seatsAmount = (int)SeatsAmountNumericUpDown.Value;
-            int engineDisplacement = (int)EngineDisplacementNumericUpDown.Value;
+            string bodyTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+            string engineTypeName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
+            string engineLocationName = DataGridView[4, DataGridView.SelectedRows[0].Index].Value.ToString();
+
+            int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
+            int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
+            int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+            int doorsAmount = int.Parse(DataGridView[3, DataGridView.SelectedRows[0].Index].Value.ToString());
+            int seatsAmount = int.Parse(DataGridView[5, DataGridView.SelectedRows[0].Index].Value.ToString());
+            int enginePower = int.Parse(DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString());
             string carModelName = CarModelNameTextBox.Text;
             int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == CarBrandComboBox.Text).CarBrandId;
             int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == CountryComboBox.Text).CountryId;
 
             var technicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId
-            && t.EngineLocationId == engineLocationId && t.DoorsAmount == doorsAmount && t.SeatsAmount == seatsAmount && t.EngineDisplacement == engineDisplacement);
-            if(technicalInformation == null)
-            {
-                MessageBox.Show("Таких тех.данных нет");
-                return;
-            }
+            && t.EngineLocationId == engineLocationId && t.DoorsAmount == doorsAmount && t.SeatsAmount == seatsAmount && t.EnginePower == enginePower);
             
             var carModel = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.TechnicalInformationId == technicalInformation.TechnicalInformationId &&
             c.CarBrandId == carBrandId && c.CountryId == countryId);
@@ -116,38 +140,42 @@ namespace AutoShow
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
             }
-
-            if (string.IsNullOrWhiteSpace(CarModelNameTextBox.Text) || BodyTypeComboBox.SelectedItem == null || EngineLocationComboBox.SelectedItem == null ||
-                EngineTypeComboBox.SelectedItem == null || CarBrandComboBox.SelectedItem == null || CountryComboBox.SelectedItem == null)
+            if (DataGridView.SelectedRows.Count < 1)
+            {
+                MessageBox.Show("Выберите тех. данные");
+                return;
+            }
+            if (DataGridView.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Выбрано слишком много кортежей");
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(CarModelNameTextBox.Text) || CarBrandComboBox.SelectedItem == null ||
+                CountryComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Заполните все поля");
                 return;
             }
+            string bodyTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+            string engineTypeName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
+            string engineLocationName = DataGridView[4, DataGridView.SelectedRows[0].Index].Value.ToString();
 
-            int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == BodyTypeComboBox.Text).BodyTypeId;
-            int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == EngineTypeComboBox.Text).EngineTypeId;
-            int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == EngineLocationComboBox.Text).EngineLocationId;
-            int doorsAmount = (int)DoorsAmountNumericUpDown.Value;
-            int seatsAmount = (int)SeatsAmountNumericUpDown.Value;
-            int engineDisplacement = (int)EngineDisplacementNumericUpDown.Value;
+            int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == bodyTypeName).BodyTypeId;
+            int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
+            int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
+            int doorsAmount = int.Parse(DataGridView[3, DataGridView.SelectedRows[0].Index].Value.ToString());
+            int seatsAmount = int.Parse(DataGridView[5, DataGridView.SelectedRows[0].Index].Value.ToString());
+            int engineDisplacement = int.Parse(DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString());
             string carModelName = CarModelNameTextBox.Text;
             int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == CarBrandComboBox.Text).CarBrandId;
             int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == CountryComboBox.Text).CountryId;
 
             var technicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId
-            && t.EngineLocationId == engineLocationId && t.DoorsAmount == doorsAmount && t.SeatsAmount == seatsAmount &&
-            t.EngineDisplacement == engineDisplacement);
+            && t.EngineLocationId == engineLocationId && t.DoorsAmount == doorsAmount && t.SeatsAmount == seatsAmount && t.EnginePower == engineDisplacement);
 
-            if (technicalInformation == null)
-            {
-                MessageBox.Show("Таких тех данных нет");
-                return;
-            }
-
-            var existingCarModel = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.CarBrandId == carBrandId &&
-            c.CountryId == countryId && c.TechnicalInformationId == technicalInformation.TechnicalInformationId);
-
-            if (existingCarModel != null)
+            var carModel = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.TechnicalInformationId == technicalInformation.TechnicalInformationId &&
+            c.CarBrandId == carBrandId && c.CountryId == countryId);
+            if (carModel != null)
             {
                 MessageBox.Show("Такая модель уже существует");
                 return;

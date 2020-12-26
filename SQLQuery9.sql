@@ -191,7 +191,7 @@ CREATE TABLE Client
 	Password             VARCHAR(20) NOT NULL,
 	Phone                VARCHAR(20) NOT NULL,
 	Email                VARCHAR(30) NULL,
-	Discount             DECIMAL(19,4) NOT NULL
+	Discount             DECIMAL(19,4) NOT NULL,
 	PRIMARY KEY (ClientId),
 	CONSTRAINT UC_Client_Pasport UNIQUE(PassportId),
 	CONSTRAINT UC_Client_FirstName_LastName UNIQUE(FirstName,LastName)

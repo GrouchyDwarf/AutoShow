@@ -50,7 +50,9 @@ namespace AutoShow
                                                                _client.Password.Equals(password));
                 if(client != null)
                 {
-                    MessageBox.Show("Успешная авторизация");
+                    var clientForm = new ClientForm(_context, _startForm);
+                    clientForm.Show();
+                    this.Close();
                 }
                 else
                 {

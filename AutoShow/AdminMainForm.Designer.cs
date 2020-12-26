@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.PaymentTypeLabel = new System.Windows.Forms.Label();
             this.ProductLabel = new System.Windows.Forms.Label();
             this.PaintedModelLabel = new System.Windows.Forms.Label();
             this.ColourLabel = new System.Windows.Forms.Label();
@@ -52,6 +53,7 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
+            this.BodyPanel.Controls.Add(this.PaymentTypeLabel);
             this.BodyPanel.Controls.Add(this.ProductLabel);
             this.BodyPanel.Controls.Add(this.PaintedModelLabel);
             this.BodyPanel.Controls.Add(this.ColourLabel);
@@ -71,6 +73,19 @@
             this.BodyPanel.Name = "BodyPanel";
             this.BodyPanel.Size = new System.Drawing.Size(669, 503);
             this.BodyPanel.TabIndex = 2;
+            // 
+            // PaymentTypeLabel
+            // 
+            this.PaymentTypeLabel.AutoSize = true;
+            this.PaymentTypeLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PaymentTypeLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PaymentTypeLabel.ForeColor = System.Drawing.Color.White;
+            this.PaymentTypeLabel.Location = new System.Drawing.Point(213, 351);
+            this.PaymentTypeLabel.Name = "PaymentTypeLabel";
+            this.PaymentTypeLabel.Size = new System.Drawing.Size(133, 23);
+            this.PaymentTypeLabel.TabIndex = 28;
+            this.PaymentTypeLabel.Text = "Виды оплаты";
+            this.PaymentTypeLabel.Click += new System.EventHandler(this.PaymentTypeLabel_Click);
             // 
             // ProductLabel
             // 
@@ -320,5 +335,6 @@
         private System.Windows.Forms.Label ColourLabel;
         private System.Windows.Forms.Label PaintedModelLabel;
         private System.Windows.Forms.Label ProductLabel;
+        private System.Windows.Forms.Label PaymentTypeLabel;
     }
 }

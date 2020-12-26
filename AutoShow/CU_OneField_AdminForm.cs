@@ -22,6 +22,7 @@ namespace AutoShow
         private readonly CarBrand _carBrand;
         private readonly Country _country;
         private readonly Colour _colour;
+        private readonly PaymentType _paymentType;
         private readonly Option _option;
         public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option)
         {
@@ -66,6 +67,12 @@ namespace AutoShow
             _colour = colour;
             TextBox.Text = _colour.ColourName;
         }
+        public CU_OneField_AdminForm(in AutoShowContext context, in AdminCrudForm adminCrudForm, in Option option, in PaymentType paymentType)
+        : this(context, adminCrudForm, option)
+        {
+            _paymentType = paymentType;
+            TextBox.Text = _paymentType.PaymentTypeName;
+        }
         private void CloseLabel_Click(object sender, EventArgs e)
         {
             _context.Dispose();
@@ -79,7 +86,8 @@ namespace AutoShow
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            if (_bodyType != null || _engineLocation != null || _engineType != null || _carBrand != null || _country != null || _colour != null)
+            if (_bodyType != null || _engineLocation != null || _engineType != null || _carBrand != null || _country != null || _colour != null ||
+                _paymentType != null)
             {
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
@@ -179,6 +187,21 @@ namespace AutoShow
                 };
                 _context.Colours.Add(newColour);
             }
+            else if(_option == Option.PaymentType)
+            {
+                string paymentTypeName = TextBox.Text;
+                var paymentType = _context.PaymentTypes.FirstOrDefault(p => p.PaymentTypeName == paymentTypeName);
+                if (paymentType != null)
+                {
+                    MessageBox.Show("Такой вид оплаты уже существует");
+                    return;
+                }
+                var newPaymentType = new PaymentType
+                {
+                    PaymentTypeName = paymentTypeName
+                };
+                _context.PaymentTypes.Add(newPaymentType);
+            }
             if (_context.SaveChanges() > 0)
             {
                 MessageBox.Show("Данные успешно добавлены");
@@ -188,7 +211,8 @@ namespace AutoShow
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            if (_bodyType == null && _engineLocation == null && _engineType == null && _carBrand == null && _country == null && _colour == null)
+            if (_bodyType == null && _engineLocation == null && _engineType == null && _carBrand == null && _country == null && _colour == null &&
+                _paymentType == null)
             {
                 MessageBox.Show("Вы перепутали обновление и создание");
                 return;
@@ -258,6 +282,17 @@ namespace AutoShow
                     return;
                 }
                 _colour.ColourName = TextBox.Text;
+            }
+            else if(_option == Option.PaymentType)
+            {
+                string paymentTypeName = TextBox.Text;
+                var paymentType = _context.PaymentTypes.FirstOrDefault(p => p.PaymentTypeName == paymentTypeName);
+                if (paymentType != null)
+                {
+                    MessageBox.Show("Такой вид оплаты уже существует");
+                    return;
+                }
+                _paymentType.PaymentTypeName = paymentTypeName;
             }
             if (_context.SaveChanges() > 0)
             {

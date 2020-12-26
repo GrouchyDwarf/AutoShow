@@ -67,11 +67,23 @@
     <Compile Include="AdminMainForm.Designer.cs">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientRegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientRegistrationForm.Designer.cs">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreatePurchaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePurchaseForm.Designer.cs">
+      <DependentUpon>CreatePurchaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CU_CarModelForm.cs">
       <SubType>Form</SubType>
@@ -116,6 +128,12 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManagerClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerClientForm.Designer.cs">
+      <DependentUpon>ManagerClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManagerCrudForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +167,12 @@
     <Compile Include="ProviderCrudForm.Designer.cs">
       <DependentUpon>ProviderCrudForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchasesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasesForm.Designer.cs">
+      <DependentUpon>PurchasesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,8 +191,14 @@
     <EmbeddedResource Include="AdminMainForm.resx">
       <DependentUpon>AdminMainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientRegistrationForm.resx">
       <DependentUpon>ClientRegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreatePurchaseForm.resx">
+      <DependentUpon>CreatePurchaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CU_CarModelForm.resx">
       <DependentUpon>CU_CarModelForm.cs</DependentUpon>
@@ -191,6 +221,9 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManagerClientForm.resx">
+      <DependentUpon>ManagerClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagerCrudForm.resx">
       <DependentUpon>ManagerCrudForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +239,9 @@
     </Compile>
     <EmbeddedResource Include="ProviderCrudForm.resx">
       <DependentUpon>ProviderCrudForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasesForm.resx">
+      <DependentUpon>PurchasesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>

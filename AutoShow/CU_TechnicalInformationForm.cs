@@ -36,7 +36,7 @@ namespace AutoShow
             EngineLocationComboBox.Text = _technicalInformation.EngineLocation.EngineLocationName;
             DoorsAmountNumericUpDown.Value = _technicalInformation.DoorsAmount;
             SeatsAmountNumericUpDown.Value = _technicalInformation.SeatsAmount;
-            EngineDisplacementNumericUpDown.Value = _technicalInformation.EngineDisplacement;
+            EngineDisplacementNumericUpDown.Value = _technicalInformation.EnginePower;
         }
 
         private void CloseLabel_Click(object sender, EventArgs e)
@@ -70,7 +70,7 @@ namespace AutoShow
             int seatsAmount = (int)SeatsAmountNumericUpDown.Value;
             int engineDisplacement = (int)EngineDisplacementNumericUpDown.Value;
             var technicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId &&
-            t.EngineLocationId == engineLocationId && t.DoorsAmount == doorsAmount && t.SeatsAmount == seatsAmount && t.EngineDisplacement == engineDisplacement);
+            t.EngineLocationId == engineLocationId && t.DoorsAmount == doorsAmount && t.SeatsAmount == seatsAmount && t.EnginePower == engineDisplacement);
             if (technicalInformation != null)
             {
                 MessageBox.Show("Такая техническая информация уже существует");
@@ -83,7 +83,7 @@ namespace AutoShow
                 EngineLocationId = engineLocationId,
                 DoorsAmount = doorsAmount,
                 SeatsAmount = seatsAmount,
-                EngineDisplacement = engineDisplacement
+                EnginePower = engineDisplacement
             };
             _context.TechnicalInformations.Add(newTechnicalInformation);
             if (_context.SaveChanges() > 0)
@@ -114,7 +114,7 @@ namespace AutoShow
             int engineDisplacement = (int)EngineDisplacementNumericUpDown.Value;
 
             var existingTechnicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.DoorsAmount == doorsAmount &&
-            t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId && t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount);
+            t.EnginePower == engineDisplacement && t.EngineLocationId == engineLocationId && t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount);
 
             if (existingTechnicalInformation != null)
             {
@@ -124,7 +124,7 @@ namespace AutoShow
 
             _technicalInformation.BodyTypeId = bodyTypeId;
             _technicalInformation.DoorsAmount = doorsAmount;
-            _technicalInformation.EngineDisplacement = engineDisplacement;
+            _technicalInformation.EnginePower = engineDisplacement;
             _technicalInformation.EngineLocationId = engineLocationId;
             _technicalInformation.EngineTypeId = engineTypeId;
             _technicalInformation.SeatsAmount = seatsAmount;

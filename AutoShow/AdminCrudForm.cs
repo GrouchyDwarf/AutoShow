@@ -26,94 +26,48 @@ namespace AutoShow
             if (_option == Option.BodyType)
             {
                 HeaderLabel.Text = "Типы кузова";
-                DataGridView.DataSource = _context.BodyTypes.Select(b => new { b.BodyTypeName }).ToList();
             }
             else if(_option == Option.EngineLocation)
             {
                 HeaderLabel.Text = "Распол.Двигателя";
-                DataGridView.DataSource = _context.EngineLocations.Select(e => new { e.EngineLocationName }).ToList();
             }
             else if(_option == Option.EngineType)
             {
                 HeaderLabel.Text = "Типы двигателя";
-                DataGridView.DataSource = _context.EngineTypes.Select(e => new { e.EngineTypeName }).ToList();
             }
             else if(_option == Option.TechnicalInformation)
             {
                 HeaderLabel.Text = "Тех.Данные";
-                DataGridView.DataSource = _context.TechnicalInformations.Select(t => new { t.BodyType.BodyTypeName,
-                                                                                           t.EngineType.EngineTypeName,
-                                                                                           t.EngineDisplacement,
-                                                                                           t.DoorsAmount,
-                                                                                           t.EngineLocation.EngineLocationName,
-                                                                                           t.SeatsAmount}).ToList();
             }
             else if(_option == Option.CarBrand)
             {
                 HeaderLabel.Text = "Марки";
-                DataGridView.DataSource = _context.CarBrands.Select(c => new { c.CarBrandName }).ToList();
             }
             else if (_option == Option.Country)
             {
                 HeaderLabel.Text = "Страны";
-                DataGridView.DataSource = _context.Countries.Select(c => new { c.CountryName }).ToList();
             }
             else if(_option == Option.CarModel)
             {
                 HeaderLabel.Text = "Модели";
-                DataGridView.DataSource = _context.CarModels.Select(c => new
-                {
-                    c.CarModelName,
-                    c.CarBrand.CarBrandName,
-                    c.Country.CountryName,
-                    c.TechnicalInformation.BodyType.BodyTypeName,
-                    c.TechnicalInformation.EngineType.EngineTypeName,
-                    c.TechnicalInformation.EngineDisplacement,
-                    c.TechnicalInformation.DoorsAmount,
-                    c.TechnicalInformation.EngineLocation.EngineLocationName,
-                    c.TechnicalInformation.SeatsAmount
-                }).ToList();
             }
             else if(_option == Option.Colour)
             {
                 HeaderLabel.Text = "Цвета";
-                DataGridView.DataSource = _context.Colours.Select(c => new { c.ColourName }).ToList();
             }
             else if(_option == Option.PaintedModel)
             {
                 HeaderLabel.Text = "Окрашенные модели";
-                DataGridView.DataSource = _context.PaintedModels.Select(c => new
-                {
-                    c.Colour.ColourName,
-                    c.CarModel.CarModelName,
-                    c.CarModel.CarBrand.CarBrandName,
-                    c.CarModel.Country.CountryName,
-                    c.CarModel.TechnicalInformation.BodyType.BodyTypeName,
-                    c.CarModel.TechnicalInformation.EngineType.EngineTypeName,
-                    c.CarModel.TechnicalInformation.EngineDisplacement,
-                    c.CarModel.TechnicalInformation.DoorsAmount,
-                    c.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
-                    c.CarModel.TechnicalInformation.SeatsAmount
-                }).ToList();
             }
             else if(_option == Option.Product)
             {
                 HeaderLabel.Text = "Продукты";
-                DataGridView.DataSource = _context.Products.Select(p => new
-                {
-                    p.Markup,
-                    p.PaintedModel.Colour.ColourName,
-                    p.PaintedModel.CarModel.CarModelName,
-                    p.PaintedModel.CarModel.CarBrand.CarBrandName,
-                    p.PaintedModel.CarModel.Country.CountryName,
-                    p.PaintedModel.CarModel.TechnicalInformation.BodyType.BodyTypeName,
-                    p.PaintedModel.CarModel.TechnicalInformation.EngineType.EngineTypeName,
-                    p.PaintedModel.CarModel.TechnicalInformation.EngineDisplacement,
-                    p.PaintedModel.CarModel.TechnicalInformation.DoorsAmount,
-                    p.PaintedModel.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
-                    p.PaintedModel.CarModel.TechnicalInformation.SeatsAmount
-                }).ToList();
             }
+            else if(_option == Option.PaymentType)
+            {
+                HeaderLabel.Text = "Виды оплаты";
+            }
+            RefreshData();
         }
 
         public void RefreshData()
@@ -135,7 +89,7 @@ namespace AutoShow
                 DataGridView.DataSource = _context.TechnicalInformations.Select(t => new {
                     t.BodyType.BodyTypeName,
                     t.EngineType.EngineTypeName,
-                    t.EngineDisplacement,
+                    t.EnginePower,
                     t.DoorsAmount,
                     t.EngineLocation.EngineLocationName,
                     t.SeatsAmount
@@ -158,7 +112,7 @@ namespace AutoShow
                     c.Country.CountryName,
                     c.TechnicalInformation.BodyType.BodyTypeName,
                     c.TechnicalInformation.EngineType.EngineTypeName,
-                    c.TechnicalInformation.EngineDisplacement,
+                    c.TechnicalInformation.EnginePower,
                     c.TechnicalInformation.DoorsAmount,
                     c.TechnicalInformation.EngineLocation.EngineLocationName,
                     c.TechnicalInformation.SeatsAmount
@@ -178,7 +132,7 @@ namespace AutoShow
                     c.CarModel.Country.CountryName,
                     c.CarModel.TechnicalInformation.BodyType.BodyTypeName,
                     c.CarModel.TechnicalInformation.EngineType.EngineTypeName,
-                    c.CarModel.TechnicalInformation.EngineDisplacement,
+                    c.CarModel.TechnicalInformation.EnginePower,
                     c.CarModel.TechnicalInformation.DoorsAmount,
                     c.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
                     c.CarModel.TechnicalInformation.SeatsAmount
@@ -195,11 +149,15 @@ namespace AutoShow
                     p.PaintedModel.CarModel.Country.CountryName,
                     p.PaintedModel.CarModel.TechnicalInformation.BodyType.BodyTypeName,
                     p.PaintedModel.CarModel.TechnicalInformation.EngineType.EngineTypeName,
-                    p.PaintedModel.CarModel.TechnicalInformation.EngineDisplacement,
+                    p.PaintedModel.CarModel.TechnicalInformation.EnginePower,
                     p.PaintedModel.CarModel.TechnicalInformation.DoorsAmount,
                     p.PaintedModel.CarModel.TechnicalInformation.EngineLocation.EngineLocationName,
                     p.PaintedModel.CarModel.TechnicalInformation.SeatsAmount
                 }).ToList();
+            }
+            else if(_option == Option.PaymentType)
+            {
+                DataGridView.DataSource = _context.PaymentTypes.Select(p => new { p.PaymentTypeName }).ToList();
             }
         }
 
@@ -218,7 +176,7 @@ namespace AutoShow
         private void CreateButton_Click(object sender, EventArgs e)
         {
             if (_option == Option.BodyType || _option == Option.EngineType || _option == Option.EngineLocation || _option == Option.CarBrand ||
-                _option == Option.Country || _option == Option.Colour)
+                _option == Option.Country || _option == Option.Colour || _option == Option.PaymentType)
             {
                 var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option);
                 createUpdateAdminForm.Show();
@@ -293,7 +251,7 @@ namespace AutoShow
                 int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
 
                 var technicalInforamtion = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId &&
-                t.EngineDisplacement == engineDisplacement && t.DoorsAmount == doorsAmount && t.EngineLocationId == engineLocationId && t.SeatsAmount == seatsAmount);
+                t.EnginePower == engineDisplacement && t.DoorsAmount == doorsAmount && t.EngineLocationId == engineLocationId && t.SeatsAmount == seatsAmount);
 
                 var createUpdateAdminForm = new CU_TechnicalInformationForm(_context, this, technicalInforamtion);
                 createUpdateAdminForm.Show();
@@ -332,7 +290,7 @@ namespace AutoShow
                 int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
 
                 int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
-                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.DoorsAmount == doorsAmount && t.EnginePower == engineDisplacement && t.EngineLocationId == engineLocationId &&
                 t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
 
                 var carModel = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.TechnicalInformationId == technicalInformationId &&
@@ -368,7 +326,7 @@ namespace AutoShow
                 int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
 
                 int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
-                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.DoorsAmount == doorsAmount && t.EnginePower == engineDisplacement && t.EngineLocationId == engineLocationId &&
                 t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
 
                 int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == colourName).ColourId;
@@ -403,7 +361,7 @@ namespace AutoShow
                 int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
 
                 int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
-                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.DoorsAmount == doorsAmount && t.EnginePower == engineDisplacement && t.EngineLocationId == engineLocationId &&
                 t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
 
                 int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == colourName).ColourId;
@@ -416,6 +374,13 @@ namespace AutoShow
                 var product = _context.Products.FirstOrDefault(p => p.PaintedModelId == paintedModelId);
 
                 var createUpdateAdminForm = new CU_ProductForm(_context, this, product);
+                createUpdateAdminForm.Show();
+            }
+            else if(_option == Option.PaymentType)
+            {
+                string paymentTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+                var paymentType = _context.PaymentTypes.FirstOrDefault(p => p.PaymentTypeName == paymentTypeName);
+                var createUpdateAdminForm = new CU_OneField_AdminForm(_context, this, _option, paymentType);
                 createUpdateAdminForm.Show();
             }
             this.Hide();
@@ -482,7 +447,7 @@ namespace AutoShow
                 int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == engineTypeName).EngineTypeId;
                 int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == engineLocationName).EngineLocationId;
                
-                var technicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId && t.EngineDisplacement == engineDisplacement &&
+                var technicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId && t.EnginePower == engineDisplacement &&
                 t.DoorsAmount == doorsAmount && t.EngineLocationId == engineLocationId && t.SeatsAmount == seatsAmount);
                 var carModel = _context.CarModels.FirstOrDefault(c => c.TechnicalInformationId == technicalInformation.TechnicalInformationId);
                 if (carModel != null)
@@ -536,7 +501,7 @@ namespace AutoShow
                 int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
 
                 int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
-                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.DoorsAmount == doorsAmount && t.EnginePower == engineDisplacement && t.EngineLocationId == engineLocationId &&
                 t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
 
                 var carModel = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.TechnicalInformationId == technicalInformationId &&
@@ -583,7 +548,7 @@ namespace AutoShow
                 int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
 
                 int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
-                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.DoorsAmount == doorsAmount && t.EnginePower == engineDisplacement && t.EngineLocationId == engineLocationId &&
                 t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
 
                 int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == colourName).ColourId;
@@ -623,7 +588,7 @@ namespace AutoShow
                 int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == countryName).CountryId;
 
                 int technicalInformationId = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId &&
-                t.DoorsAmount == doorsAmount && t.EngineDisplacement == engineDisplacement && t.EngineLocationId == engineLocationId &&
+                t.DoorsAmount == doorsAmount && t.EnginePower == engineDisplacement && t.EngineLocationId == engineLocationId &&
                 t.EngineTypeId == engineTypeId && t.SeatsAmount == seatsAmount).TechnicalInformationId;
 
                 int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == colourName).ColourId;
@@ -657,6 +622,18 @@ namespace AutoShow
                 }
 
                 _context.Products.Remove(product);
+            }
+            else if(_option == Option.PaymentType)
+            {
+                string paymentTypeName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
+                var paymentType = _context.PaymentTypes.FirstOrDefault(p => p.PaymentTypeName == paymentTypeName);
+                var purchase = _context.Purchases.FirstOrDefault(p => p.PaymentTypeId == paymentType.PaymentTypeId);
+                if (purchase != null)
+                {
+                    MessageBox.Show("Данный тип оплаты присутсвует в покупках, поэтому для начала удалите все связанные данные");
+                    return;
+                }
+                _context.PaymentTypes.Remove(paymentType);
             }
             if (_context.SaveChanges() > 0)
             {
