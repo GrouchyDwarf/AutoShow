@@ -57,6 +57,11 @@ namespace AutoShow
                 MessageBox.Show("Выбрано слишком много кортежей");
                 return;
             }
+            if (PaymentTypeComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Заполните все поля");
+                return;
+            }
             if (_warehouse.Quantity < 1)
             {
                 MessageBox.Show("Недостаточно товара на складе");

@@ -29,23 +29,21 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.ToLabel = new System.Windows.Forms.Label();
+            this.FromLabel = new System.Windows.Forms.Label();
+            this.ToDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.FromDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.CarModelComboBox = new System.Windows.Forms.ComboBox();
+            this.CarModelLabel = new System.Windows.Forms.Label();
+            this.CarBrandComboBox = new System.Windows.Forms.ComboBox();
+            this.BrandLabel = new System.Windows.Forms.Label();
             this.SearchButton = new System.Windows.Forms.Button();
             this.DataGridView = new System.Windows.Forms.DataGridView();
             this.BackButton = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.CloseLabel = new System.Windows.Forms.Label();
             this.PurchaseLabel = new System.Windows.Forms.Label();
-            this.BrandLabel = new System.Windows.Forms.Label();
-            this.CarBrandComboBox = new System.Windows.Forms.ComboBox();
-            this.CarModelLabel = new System.Windows.Forms.Label();
-            this.CarModelComboBox = new System.Windows.Forms.ComboBox();
-            this.FromDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.ToDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.FromLabel = new System.Windows.Forms.Label();
-            this.ToLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.SumCheckBox = new System.Windows.Forms.CheckBox();
-            this.BrandModelSumCheckBox = new System.Windows.Forms.CheckBox();
             this.BodyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.HeaderPanel.SuspendLayout();
@@ -54,9 +52,7 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
-            this.BodyPanel.Controls.Add(this.BrandModelSumCheckBox);
-            this.BodyPanel.Controls.Add(this.SumCheckBox);
-            this.BodyPanel.Controls.Add(this.button1);
+            this.BodyPanel.Controls.Add(this.DeleteButton);
             this.BodyPanel.Controls.Add(this.ToLabel);
             this.BodyPanel.Controls.Add(this.FromLabel);
             this.BodyPanel.Controls.Add(this.ToDateTimePicker);
@@ -75,6 +71,102 @@
             this.BodyPanel.Size = new System.Drawing.Size(1038, 546);
             this.BodyPanel.TabIndex = 7;
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
+            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeleteButton.FlatAppearance.BorderSize = 0;
+            this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteButton.ForeColor = System.Drawing.Color.White;
+            this.DeleteButton.Location = new System.Drawing.Point(888, 481);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(138, 41);
+            this.DeleteButton.TabIndex = 58;
+            this.DeleteButton.Text = "Удалить";
+            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // ToLabel
+            // 
+            this.ToLabel.AutoSize = true;
+            this.ToLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ToLabel.ForeColor = System.Drawing.Color.White;
+            this.ToLabel.Location = new System.Drawing.Point(628, 447);
+            this.ToLabel.Name = "ToLabel";
+            this.ToLabel.Size = new System.Drawing.Size(35, 23);
+            this.ToLabel.TabIndex = 54;
+            this.ToLabel.Text = "По";
+            // 
+            // FromLabel
+            // 
+            this.FromLabel.AutoSize = true;
+            this.FromLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FromLabel.ForeColor = System.Drawing.Color.White;
+            this.FromLabel.Location = new System.Drawing.Point(628, 393);
+            this.FromLabel.Name = "FromLabel";
+            this.FromLabel.Size = new System.Drawing.Size(24, 23);
+            this.FromLabel.TabIndex = 53;
+            this.FromLabel.Text = "С";
+            // 
+            // ToDateTimePicker
+            // 
+            this.ToDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ToDateTimePicker.Location = new System.Drawing.Point(669, 441);
+            this.ToDateTimePicker.Name = "ToDateTimePicker";
+            this.ToDateTimePicker.Size = new System.Drawing.Size(199, 30);
+            this.ToDateTimePicker.TabIndex = 52;
+            // 
+            // FromDateTimePicker
+            // 
+            this.FromDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FromDateTimePicker.Location = new System.Drawing.Point(669, 387);
+            this.FromDateTimePicker.Name = "FromDateTimePicker";
+            this.FromDateTimePicker.Size = new System.Drawing.Size(199, 30);
+            this.FromDateTimePicker.TabIndex = 51;
+            // 
+            // CarModelComboBox
+            // 
+            this.CarModelComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CarModelComboBox.FormattingEnabled = true;
+            this.CarModelComboBox.Location = new System.Drawing.Point(433, 420);
+            this.CarModelComboBox.Name = "CarModelComboBox";
+            this.CarModelComboBox.Size = new System.Drawing.Size(172, 31);
+            this.CarModelComboBox.TabIndex = 50;
+            // 
+            // CarModelLabel
+            // 
+            this.CarModelLabel.AutoSize = true;
+            this.CarModelLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CarModelLabel.ForeColor = System.Drawing.Color.White;
+            this.CarModelLabel.Location = new System.Drawing.Point(429, 387);
+            this.CarModelLabel.Name = "CarModelLabel";
+            this.CarModelLabel.Size = new System.Drawing.Size(78, 23);
+            this.CarModelLabel.TabIndex = 49;
+            this.CarModelLabel.Text = "Модель";
+            // 
+            // CarBrandComboBox
+            // 
+            this.CarBrandComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CarBrandComboBox.FormattingEnabled = true;
+            this.CarBrandComboBox.Location = new System.Drawing.Point(235, 420);
+            this.CarBrandComboBox.Name = "CarBrandComboBox";
+            this.CarBrandComboBox.Size = new System.Drawing.Size(172, 31);
+            this.CarBrandComboBox.TabIndex = 48;
+            this.CarBrandComboBox.SelectedValueChanged += new System.EventHandler(this.CarBrandComboBox_SelectedValueChanged);
+            // 
+            // BrandLabel
+            // 
+            this.BrandLabel.AutoSize = true;
+            this.BrandLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BrandLabel.ForeColor = System.Drawing.Color.White;
+            this.BrandLabel.Location = new System.Drawing.Point(231, 387);
+            this.BrandLabel.Name = "BrandLabel";
+            this.BrandLabel.Size = new System.Drawing.Size(70, 23);
+            this.BrandLabel.TabIndex = 47;
+            this.BrandLabel.Text = "Марка";
+            // 
             // SearchButton
             // 
             this.SearchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
@@ -90,6 +182,7 @@
             this.SearchButton.TabIndex = 14;
             this.SearchButton.Text = "Найти";
             this.SearchButton.UseVisualStyleBackColor = false;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // DataGridView
             // 
@@ -157,124 +250,6 @@
             this.PurchaseLabel.TabIndex = 17;
             this.PurchaseLabel.Text = "Сделки";
             // 
-            // BrandLabel
-            // 
-            this.BrandLabel.AutoSize = true;
-            this.BrandLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BrandLabel.ForeColor = System.Drawing.Color.White;
-            this.BrandLabel.Location = new System.Drawing.Point(231, 387);
-            this.BrandLabel.Name = "BrandLabel";
-            this.BrandLabel.Size = new System.Drawing.Size(70, 23);
-            this.BrandLabel.TabIndex = 47;
-            this.BrandLabel.Text = "Марка";
-            // 
-            // CarBrandComboBox
-            // 
-            this.CarBrandComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CarBrandComboBox.FormattingEnabled = true;
-            this.CarBrandComboBox.Location = new System.Drawing.Point(235, 420);
-            this.CarBrandComboBox.Name = "CarBrandComboBox";
-            this.CarBrandComboBox.Size = new System.Drawing.Size(172, 31);
-            this.CarBrandComboBox.TabIndex = 48;
-            // 
-            // CarModelLabel
-            // 
-            this.CarModelLabel.AutoSize = true;
-            this.CarModelLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CarModelLabel.ForeColor = System.Drawing.Color.White;
-            this.CarModelLabel.Location = new System.Drawing.Point(429, 387);
-            this.CarModelLabel.Name = "CarModelLabel";
-            this.CarModelLabel.Size = new System.Drawing.Size(78, 23);
-            this.CarModelLabel.TabIndex = 49;
-            this.CarModelLabel.Text = "Модель";
-            // 
-            // CarModelComboBox
-            // 
-            this.CarModelComboBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CarModelComboBox.FormattingEnabled = true;
-            this.CarModelComboBox.Location = new System.Drawing.Point(433, 420);
-            this.CarModelComboBox.Name = "CarModelComboBox";
-            this.CarModelComboBox.Size = new System.Drawing.Size(172, 31);
-            this.CarModelComboBox.TabIndex = 50;
-            // 
-            // FromDateTimePicker
-            // 
-            this.FromDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FromDateTimePicker.Location = new System.Drawing.Point(669, 387);
-            this.FromDateTimePicker.Name = "FromDateTimePicker";
-            this.FromDateTimePicker.Size = new System.Drawing.Size(199, 30);
-            this.FromDateTimePicker.TabIndex = 51;
-            // 
-            // ToDateTimePicker
-            // 
-            this.ToDateTimePicker.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ToDateTimePicker.Location = new System.Drawing.Point(669, 441);
-            this.ToDateTimePicker.Name = "ToDateTimePicker";
-            this.ToDateTimePicker.Size = new System.Drawing.Size(199, 30);
-            this.ToDateTimePicker.TabIndex = 52;
-            // 
-            // FromLabel
-            // 
-            this.FromLabel.AutoSize = true;
-            this.FromLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FromLabel.ForeColor = System.Drawing.Color.White;
-            this.FromLabel.Location = new System.Drawing.Point(628, 393);
-            this.FromLabel.Name = "FromLabel";
-            this.FromLabel.Size = new System.Drawing.Size(24, 23);
-            this.FromLabel.TabIndex = 53;
-            this.FromLabel.Text = "С";
-            // 
-            // ToLabel
-            // 
-            this.ToLabel.AutoSize = true;
-            this.ToLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ToLabel.ForeColor = System.Drawing.Color.White;
-            this.ToLabel.Location = new System.Drawing.Point(628, 447);
-            this.ToLabel.Name = "ToLabel";
-            this.ToLabel.Size = new System.Drawing.Size(35, 23);
-            this.ToLabel.TabIndex = 54;
-            this.ToLabel.Text = "По";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(235, 481);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(268, 41);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "Посчитать сумму";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // SumCheckBox
-            // 
-            this.SumCheckBox.AutoSize = true;
-            this.SumCheckBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SumCheckBox.ForeColor = System.Drawing.Color.White;
-            this.SumCheckBox.Location = new System.Drawing.Point(535, 481);
-            this.SumCheckBox.Name = "SumCheckBox";
-            this.SumCheckBox.Size = new System.Drawing.Size(100, 27);
-            this.SumCheckBox.TabIndex = 56;
-            this.SumCheckBox.Text = "Общую";
-            this.SumCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // BrandModelSumCheckBox
-            // 
-            this.BrandModelSumCheckBox.AutoSize = true;
-            this.BrandModelSumCheckBox.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BrandModelSumCheckBox.ForeColor = System.Drawing.Color.White;
-            this.BrandModelSumCheckBox.Location = new System.Drawing.Point(535, 507);
-            this.BrandModelSumCheckBox.Name = "BrandModelSumCheckBox";
-            this.BrandModelSumCheckBox.Size = new System.Drawing.Size(233, 27);
-            this.BrandModelSumCheckBox.TabIndex = 57;
-            this.BrandModelSumCheckBox.Text = "По маркам и моделям";
-            this.BrandModelSumCheckBox.UseVisualStyleBackColor = true;
-            // 
             // PurchasesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -311,8 +286,6 @@
         private System.Windows.Forms.Label FromLabel;
         private System.Windows.Forms.DateTimePicker ToDateTimePicker;
         private System.Windows.Forms.DateTimePicker FromDateTimePicker;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckBox BrandModelSumCheckBox;
-        private System.Windows.Forms.CheckBox SumCheckBox;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }

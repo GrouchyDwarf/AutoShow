@@ -149,5 +149,11 @@ namespace AutoShow
             var managerClientForm = new ManagerClientForm(_context, this);
             managerClientForm.Show();
         }
+
+        private void StatisticsButton_Click(object sender, EventArgs e)
+        {
+            var statisticsForm = new StatisticsForm(_context, this);
+            statisticsForm.Show();
+        }
     }
 }
