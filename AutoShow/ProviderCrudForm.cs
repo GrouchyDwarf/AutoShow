@@ -90,31 +90,6 @@ namespace AutoShow
             this.Hide();
         }
 
-        private void UpdateButton_Click(object sender, EventArgs e)
-        {
-            if (DataGridView.SelectedRows.Count < 1)
-            {
-                MessageBox.Show("Выберите кортеж");
-                return;
-            }
-            if (DataGridView.SelectedRows.Count > 1)
-            {
-                MessageBox.Show("Выбрано слишком много кортежей");
-                return;
-            }
-            string firstName = DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString();
-            string lastName= DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
-            DateTime supplyDate = DateTime.Parse(DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString());
-
-            var provider = _context.Providers.FirstOrDefault(p => p.FirstName == firstName && p.LastName == lastName);
-
-            var supply = _context.Supplies.FirstOrDefault(s => s.ProviderId == provider.ProviderId && s.SupplyDate == supplyDate);
-
-            var createUpdateAdminForm = new CU_SupplyForm(_context, this, supply);
-            createUpdateAdminForm.Show();
-            this.Hide();
-        }
-
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             if (DataGridView.SelectedRows.Count < 1)

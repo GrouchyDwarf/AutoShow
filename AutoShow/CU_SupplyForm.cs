@@ -101,6 +101,11 @@ namespace AutoShow
             DateTime supplyDate = DateTimePicker.Value;
             decimal price = PriceNumericUpDown.Value;
             int quantity = (int)QuantityNumericUpDown.Value;
+            if(quantity <= 0)
+            {
+                MessageBox.Show("Количество товара не может быть 0 и меньше");
+                return;
+            }
             decimal markup = decimal.Parse(DataGridView[0, DataGridView.SelectedRows[0].Index].Value.ToString());
             string colourName = DataGridView[1, DataGridView.SelectedRows[0].Index].Value.ToString();
             string carModelName = DataGridView[2, DataGridView.SelectedRows[0].Index].Value.ToString();
@@ -178,87 +183,6 @@ namespace AutoShow
             _providerCrudForm.RefreshData();
         }
 
-        private void UpdateButton_Click(object sender, EventArgs e)
-        {
-            /*if (_supply == null)
-            {
-                MessageBox.Show("Вы перепутали обновление и создание");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(CarModelNameTextBox.Text) || BodyTypeComboBox.SelectedItem == null || EngineLocationComboBox.SelectedItem == null ||
-                EngineTypeComboBox.SelectedItem == null || CarBrandComboBox.SelectedItem == null || CountryComboBox.SelectedItem == null ||
-                ColourComboBox.SelectedItem == null)
-            {
-                MessageBox.Show("Заполните все поля");
-                return;
-            }
-
-            int bodyTypeId = _context.BodyTypes.FirstOrDefault(b => b.BodyTypeName == BodyTypeComboBox.Text).BodyTypeId;
-            int engineTypeId = _context.EngineTypes.FirstOrDefault(en => en.EngineTypeName == EngineTypeComboBox.Text).EngineTypeId;
-            int engineLocationId = _context.EngineLocations.FirstOrDefault(en => en.EngineLocationName == EngineLocationComboBox.Text).EngineLocationId;
-            int doorsAmount = (int)DoorsAmountNumericUpDown.Value;
-            int seatsAmount = (int)SeatsAmountNumericUpDown.Value;
-            int engineDisplacement = (int)EngineDisplacementNumericUpDown.Value;
-            string carModelName = CarModelNameTextBox.Text;
-            int carBrandId = _context.CarBrands.FirstOrDefault(c => c.CarBrandName == CarBrandComboBox.Text).CarBrandId;
-            int countryId = _context.Countries.FirstOrDefault(c => c.CountryName == CountryComboBox.Text).CountryId;
-            int colourId = _context.Colours.FirstOrDefault(c => c.ColourName == ColourComboBox.Text).ColourId;
-            DateTime supplyDate = DateTimePicker.Value;
-            int quantity = (int)QuantityNumericUpDown.Value;
-            decimal price = PriceNumericUpDown.Value;
-
-            var technicalInformation = _context.TechnicalInformations.FirstOrDefault(t => t.BodyTypeId == bodyTypeId && t.EngineTypeId == engineTypeId
-            && t.EngineLocationId == engineLocationId && t.DoorsAmount == doorsAmount && t.SeatsAmount == seatsAmount &&
-            t.EnginePower == engineDisplacement);
-
-            if (technicalInformation == null)
-            {
-                MessageBox.Show("Таких тех данных нет");
-                return;
-            }
-
-            var carModel = _context.CarModels.FirstOrDefault(c => c.CarModelName == carModelName && c.CarBrandId == carBrandId &&
-            c.CountryId == countryId && c.TechnicalInformationId == technicalInformation.TechnicalInformationId);
-
-            if (carModel == null)
-            {
-                MessageBox.Show("Таких моделей нет");
-                return;
-            }
-
-            var paintedModel = _context.PaintedModels.FirstOrDefault(p => p.CarModelId == carModel.CarModelId && p.ColourId == colourId);
-
-            if (paintedModel == null)
-            {
-                MessageBox.Show("Такой окрашенной модели не существует");
-                return;
-            }
-            var product = _context.Products.FirstOrDefault(p => p.PaintedModelId == paintedModel.PaintedModelId);
-
-            if (product == null)
-            {
-                MessageBox.Show("Такого продукта не существует");
-                return;
-            }
-
-            var supply = _context.Supplies.FirstOrDefault(s => s.ProviderId == _provider.ProviderId && s.SupplyDate.Year == supplyDate.Year &&
-            s.SupplyDate.Month == supplyDate.Month && s.SupplyDate.Day == supplyDate.Day);
-            if (supply != null)
-            {
-                MessageBox.Show("Вам нельзя совершать более одной поставки в день");
-                return;
-            }
-            _supply.Price = price;
-            _supply.ProductId = product.ProductId;
-            _supply.ProviderId = _provider.ProviderId;
-            _supply.Quantity = quantity;
-            _supply.SupplyDate = supplyDate;
-
-            if (_context.SaveChanges() > 0)
-            {
-                MessageBox.Show("Данные успешно добавлены");
-            }
-            _providerCrudForm.RefreshData();*/
-        }
+        
     }
 }

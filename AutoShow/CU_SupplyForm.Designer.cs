@@ -37,7 +37,6 @@
             this.SupplyDateLabel = new System.Windows.Forms.Label();
             this.DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.CreateButton = new System.Windows.Forms.Button();
-            this.UpdateButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.CloseLabel = new System.Windows.Forms.Label();
@@ -59,7 +58,6 @@
             this.BodyPanel.Controls.Add(this.SupplyDateLabel);
             this.BodyPanel.Controls.Add(this.DateTimePicker);
             this.BodyPanel.Controls.Add(this.CreateButton);
-            this.BodyPanel.Controls.Add(this.UpdateButton);
             this.BodyPanel.Controls.Add(this.BackButton);
             this.BodyPanel.Controls.Add(this.HeaderPanel);
             this.BodyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -157,30 +155,13 @@
             this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateButton.ForeColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(440, 457);
+            this.CreateButton.Location = new System.Drawing.Point(440, 512);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(151, 41);
             this.CreateButton.TabIndex = 15;
             this.CreateButton.Text = "Создать";
             this.CreateButton.UseVisualStyleBackColor = false;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
-            // 
-            // UpdateButton
-            // 
-            this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
-            this.UpdateButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UpdateButton.FlatAppearance.BorderSize = 0;
-            this.UpdateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
-            this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UpdateButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(40, 457);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(161, 41);
-            this.UpdateButton.TabIndex = 14;
-            this.UpdateButton.Text = "Обновить";
-            this.UpdateButton.UseVisualStyleBackColor = false;
-            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // BackButton
             // 
@@ -248,7 +229,6 @@
 
         private System.Windows.Forms.Panel BodyPanel;
         private System.Windows.Forms.Button CreateButton;
-        private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel HeaderPanel;
         private System.Windows.Forms.Label CloseLabel;

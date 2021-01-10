@@ -80,6 +80,7 @@ namespace AutoShow
         {
             var purchasesForm = new PurchasesForm(_context, this);
             purchasesForm.Show();
+            this.Hide();
         }
 
         private void CreatePurchaseButton_Click(object sender, EventArgs e)
@@ -148,12 +149,21 @@ namespace AutoShow
         {
             var managerClientForm = new ManagerClientForm(_context, this);
             managerClientForm.Show();
+            this.Hide();
         }
 
         private void StatisticsButton_Click(object sender, EventArgs e)
         {
             var statisticsForm = new StatisticsForm(_context, this);
             statisticsForm.Show();
+            this.Hide();
+        }
+
+        private void ChartButton_Click(object sender, EventArgs e)
+        {
+            var chartForm = new ChartForm(_context, this);
+            chartForm.Show();
+            this.Hide();
         }
     }
 }

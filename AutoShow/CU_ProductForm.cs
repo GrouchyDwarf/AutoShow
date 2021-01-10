@@ -125,6 +125,7 @@ namespace AutoShow
             if (product != null && product.Markup == markup)
             {
                 MessageBox.Show("Такой продукт уже существует");
+                return;
             }
             var newProduct = new Product
             {

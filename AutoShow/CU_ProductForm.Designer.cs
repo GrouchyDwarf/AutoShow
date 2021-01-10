@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
+            this.DataGridView = new System.Windows.Forms.DataGridView();
             this.MarkupNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.MarkupLabel = new System.Windows.Forms.Label();
             this.CreateButton = new System.Windows.Forms.Button();
@@ -36,11 +37,10 @@
             this.BackButton = new System.Windows.Forms.Button();
             this.HeaderPanel = new System.Windows.Forms.Panel();
             this.CloseLabel = new System.Windows.Forms.Label();
-            this.DataGridView = new System.Windows.Forms.DataGridView();
             this.BodyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkupNumericUpDown)).BeginInit();
             this.HeaderPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // BodyPanel
@@ -58,6 +58,19 @@
             this.BodyPanel.Name = "BodyPanel";
             this.BodyPanel.Size = new System.Drawing.Size(625, 532);
             this.BodyPanel.TabIndex = 9;
+            // 
+            // DataGridView
+            // 
+            this.DataGridView.AllowUserToAddRows = false;
+            this.DataGridView.AllowUserToDeleteRows = false;
+            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView.Location = new System.Drawing.Point(31, 117);
+            this.DataGridView.Name = "DataGridView";
+            this.DataGridView.ReadOnly = true;
+            this.DataGridView.RowHeadersWidth = 51;
+            this.DataGridView.RowTemplate.Height = 24;
+            this.DataGridView.Size = new System.Drawing.Size(560, 198);
+            this.DataGridView.TabIndex = 41;
             // 
             // MarkupNumericUpDown
             // 
@@ -159,19 +172,6 @@
             this.CloseLabel.Text = "X";
             this.CloseLabel.Click += new System.EventHandler(this.CloseLabel_Click);
             // 
-            // DataGridView
-            // 
-            this.DataGridView.AllowUserToAddRows = false;
-            this.DataGridView.AllowUserToDeleteRows = false;
-            this.DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView.Location = new System.Drawing.Point(31, 117);
-            this.DataGridView.Name = "DataGridView";
-            this.DataGridView.ReadOnly = true;
-            this.DataGridView.RowHeadersWidth = 51;
-            this.DataGridView.RowTemplate.Height = 24;
-            this.DataGridView.Size = new System.Drawing.Size(560, 198);
-            this.DataGridView.TabIndex = 41;
-            // 
             // CU_ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -184,10 +184,10 @@
             this.Text = "CU_ProductForm";
             this.BodyPanel.ResumeLayout(false);
             this.BodyPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MarkupNumericUpDown)).EndInit();
             this.HeaderPanel.ResumeLayout(false);
             this.HeaderPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }

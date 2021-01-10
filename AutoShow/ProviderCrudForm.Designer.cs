@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.BodyPanel = new System.Windows.Forms.Panel();
-            this.UpdateButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.DataGridView = new System.Windows.Forms.DataGridView();
@@ -46,7 +45,6 @@
             // BodyPanel
             // 
             this.BodyPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(23)))), ((int)(((byte)(29)))));
-            this.BodyPanel.Controls.Add(this.UpdateButton);
             this.BodyPanel.Controls.Add(this.CreateButton);
             this.BodyPanel.Controls.Add(this.DeleteButton);
             this.BodyPanel.Controls.Add(this.DataGridView);
@@ -58,23 +56,6 @@
             this.BodyPanel.Size = new System.Drawing.Size(848, 503);
             this.BodyPanel.TabIndex = 5;
             // 
-            // UpdateButton
-            // 
-            this.UpdateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
-            this.UpdateButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UpdateButton.FlatAppearance.BorderSize = 0;
-            this.UpdateButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(5)))), ((int)(((byte)(227)))));
-            this.UpdateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UpdateButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateButton.Location = new System.Drawing.Point(651, 391);
-            this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(156, 41);
-            this.UpdateButton.TabIndex = 16;
-            this.UpdateButton.Text = "Обновить";
-            this.UpdateButton.UseVisualStyleBackColor = false;
-            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
-            // 
             // CreateButton
             // 
             this.CreateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(4)))), ((int)(((byte)(92)))));
@@ -84,7 +65,7 @@
             this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateButton.ForeColor = System.Drawing.Color.White;
-            this.CreateButton.Location = new System.Drawing.Point(651, 450);
+            this.CreateButton.Location = new System.Drawing.Point(651, 391);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(156, 41);
             this.CreateButton.TabIndex = 15;
@@ -208,7 +189,6 @@
         #endregion
 
         private System.Windows.Forms.Panel BodyPanel;
-        private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.DataGridView DataGridView;
